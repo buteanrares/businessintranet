@@ -1,0 +1,14 @@
+package com.BusinessIntranet.BusinessIntranet.Enums;
+
+public enum Department {
+    BUSINESS_DEVELOPMENT,
+    HUMAN_RESOURCES,
+    ACCOUNTS_AND_FINANCE,
+    INFRASTRUCTURE,
+    RESEARCH_AND_DEVELOPMENT,
+    QUALITY_ASSURANCE,
+    PRODUCT_DEVELOPMENT,
+    ADMINISTRATION,
+    SECURITY,
+    CUSTOMER_SUPPORT
+}
