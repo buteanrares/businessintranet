@@ -1,0 +1,16 @@
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Configuration\Configuration.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\WebSecurityConfig.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Controllers\AccountController.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\KeycloakConfiguration\MySQLUserStorageProvider.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Controllers\EmployeeController.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\BusinessIntranetApplication.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Models\Account.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Services\EmployeeService.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Repositories\AccountRepository.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Services\AccountService.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Models\Employee.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Enums\Department.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\KeycloakConfiguration\MySQLUserStorageProviderFactory.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Exceptions\AccountNotFoundException.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Exceptions\EmployeeNotFoundException.java
+C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Repositories\EmployeeRepository.java
