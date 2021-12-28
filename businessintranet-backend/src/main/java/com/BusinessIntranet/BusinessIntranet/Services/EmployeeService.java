@@ -7,6 +7,8 @@ import com.BusinessIntranet.BusinessIntranet.Models.Employee;
 import com.BusinessIntranet.BusinessIntranet.Repositories.AccountRepository;
 import com.BusinessIntranet.BusinessIntranet.Repositories.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -15,16 +17,18 @@ import java.util.List;
 public class EmployeeService {
     public final EmployeeRepository employeeRepository;
     public final AccountRepository accountRepository;
+    public final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public EmployeeService(EmployeeRepository employeeRepository, AccountRepository accountRepository) {
+    public EmployeeService(EmployeeRepository employeeRepository, AccountRepository accountRepository, PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
         this.accountRepository = accountRepository;
+        this.passwordEncoder=passwordEncoder;
     }
 
     public Employee createEmployee(Employee employee) {
         Account defaultAccount = new Account(employee.getFirstName() + employee.getLastName() + Configuration.EMAIL_DOMAIN,
-                Configuration.INITIAL_PASSWORD);
+                passwordEncoder.encode(Configuration.INITIAL_PASSWORD));
         this.accountRepository.save(defaultAccount);
         employee.setAccount(defaultAccount);
         return this.employeeRepository.save(employee);
