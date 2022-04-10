@@ -25,9 +25,9 @@ public class AccountService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        Account account = this.accountRepository.findAccountByEmail(email)
+        Account account = this.accountRepository.findAccountByPrimaryEmail(email)
                 .orElseThrow(() -> new AccountNotFoundException("Account with email " + email + " does not exist."));
-        return new User(account.getEmail(), account.getPassword(), new ArrayList<>()); // TODO: Define roles
+        return new User(account.getPrimaryEmail(), account.getPassword(), new ArrayList<>()); // TODO: Define roles
     }
 
     public Account createAccount(Account account) {
@@ -44,7 +44,7 @@ public class AccountService implements UserDetailsService {
     }
 
     public Account findAccountByEmail(String email) {
-        return this.accountRepository.findAccountByEmail(email)
+        return this.accountRepository.findAccountByPrimaryEmail(email)
                 .orElseThrow(() -> new AccountNotFoundException("Account with email " + email + "does not exist."));
     }
 

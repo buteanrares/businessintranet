@@ -5,7 +5,7 @@ import com.BusinessIntranet.BusinessIntranet.Enums.Department;
 import javax.persistence.*;
 
 
-@Entity
+@Entity(name = "Employees")
 public class Employee {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
