@@ -29,7 +29,7 @@
                         "assets": ["src/favicon.ico", "src/assets"],
                         "styles": [
                             "node_modules/devextreme/dist/css/dx.common.css",
-                            "node_modules/devextreme/dist/css/dx.dark.css",
+                            "node_modules/devextreme/dist/css/dx.light.css",
                             "src/styles.scss"
                         ],
                         "scripts": []
