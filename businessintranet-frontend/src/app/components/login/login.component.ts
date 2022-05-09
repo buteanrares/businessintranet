@@ -1,5 +1,6 @@
-import {Component, OnInit} from '@angular/core';
-import {AuthenticationService} from "../../service/authentication.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthenticationService } from "../../service/authentication.service";
+import { EmployeeModel } from "../../models/employee/employee-model"
 
 @Component({
   selector: 'app-login',
@@ -8,8 +9,8 @@ import {AuthenticationService} from "../../service/authentication.service";
 })
 export class LoginComponent implements OnInit {
 
-  username: string
-  password: string
+  username: string = ""
+  password: string = ""
   errorMessage = 'Invalid credentials.'
   successMessage: string | undefined
   invalidLogin = false
@@ -22,15 +23,11 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    this.authenticationService.login(this.username, this.password).subscribe((result) => {
-      this.invalidLogin = false
-      this.loginSuccess = true
-      this.successMessage = 'Login successful'
-      //redirect to main page
-    }, () => {
-      this.invalidLogin = true
-      this.loginSuccess = false
-    })
+    this.authenticationService.login({ username: this.username, password: this.password }).subscribe(
+      {
+        next: () => { console.log("next") },        // nextHandler
+        error: () => { console.log("error") },       // errorHandler
+        complete: () => { console.log("complete") },    // completeHandler
+      });
   }
-
 }

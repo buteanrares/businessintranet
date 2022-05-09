@@ -1,15 +1,36 @@
-<div class=""wrapper fadeInDown>
-  <div id=""formContent>
-    <div class="alert alert-warning" *ngIf='invalidLogin'>{{errorMessage}}</div>
-    <div class="alert alert-success" *ngIf='loginSuccess'>{{successMessage}}</div>
-<!-- Tabs titles-->
-    <h3>Login</h3>
+<div class="page-content-div" wrapper fadeInDown>
+    <h3 class="login-header">Login</h3>
+    <div class="login-form-content-div" formContent>
+        <!-- Login form -->
+        <div class="div-input-credentials">
+            <div>
+                <label>Username</label>
+                <dx-text-box class="default-padding" [(value)]="username">
+                </dx-text-box>
+            </div>
+            <div>
+                <label>Password</label>
+                <dx-text-box
+                    class="default-padding"
+                    mode="password"
+                    [(value)]="password"
+                >
+                </dx-text-box>
+            </div>
+            <div class="div-submit-login">
+                <dx-button
+                    text="Submit"
+                    class="default-padding"
+                    (onClick)="handleLogin()"
+                ></dx-button>
+            </div>
+        </div>
 
-<!-- Login form -->
-    <form>
-      <input type="text" id="username" class="fadeIn second" [(ngModel)]="username" name="username" placeholder="username">
-      <input type="password" id="password" class="fadeIn third" [(ngModel)]="password" name="password" placeholder="password">
-      <input type="submit" (click)="handleLogin()" class="fadeIn fourth" value="Log in">
-    </form>
-  </div>
+        <div class="alert alert-warning" *ngIf="invalidLogin">
+            {{ errorMessage }}
+        </div>
+        <div class="alert alert-success" *ngIf="loginSuccess">
+            {{ successMessage }}
+        </div>
+    </div>
 </div>
