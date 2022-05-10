@@ -10,6 +10,9 @@ import { HttpClientModule } from "@angular/common/http";
 import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
 import { HomeComponent } from './components/home/home.component';
 import { EmployeesComponent } from './components/employees/employees.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
+import { MeetingsComponent } from './components/meetings/meetings.component';
+import { DiscussionsBoardComponent } from './components/discussions-board/discussions-board.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +21,9 @@ import { EmployeesComponent } from './components/employees/employees.component';
     NavigationMenuComponent,
     HomeComponent,
     EmployeesComponent,
+    CalendarComponent,
+    MeetingsComponent,
+    DiscussionsBoardComponent,
   ],
   imports: [
     BrowserModule,
