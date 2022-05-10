@@ -7,13 +7,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './components/login/login.component';
 import { FormsModule } from "@angular/forms";
 import { HttpClientModule } from "@angular/common/http";
-import { SidemenuComponent } from './components/sidemenu/sidemenu.component';
+import { NavigationMenuComponent } from './components/navigation-menu/navigation-menu.component';
+import { HomeComponent } from './components/home/home.component';
+import { EmployeesComponent } from './components/employees/employees.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    SidemenuComponent
+    NavigationMenuComponent,
+    HomeComponent,
+    EmployeesComponent,
   ],
   imports: [
     BrowserModule,
