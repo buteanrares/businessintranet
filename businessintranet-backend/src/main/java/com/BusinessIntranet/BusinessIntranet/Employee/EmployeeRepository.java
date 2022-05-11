@@ -1,6 +1,5 @@
-package com.BusinessIntranet.BusinessIntranet.Repositories;
+package com.BusinessIntranet.BusinessIntranet.Employee;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

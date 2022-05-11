@@ -1,7 +1,5 @@
-package com.BusinessIntranet.BusinessIntranet.Controllers;
+package com.BusinessIntranet.BusinessIntranet.Message;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Message;
-import com.BusinessIntranet.BusinessIntranet.Services.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

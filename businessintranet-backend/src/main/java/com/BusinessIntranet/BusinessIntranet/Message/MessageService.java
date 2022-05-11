@@ -1,9 +1,7 @@
-package com.BusinessIntranet.BusinessIntranet.Services;
+package com.BusinessIntranet.BusinessIntranet.Message;
 
-import com.BusinessIntranet.BusinessIntranet.Exceptions.MessageNotFoundException;
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
-import com.BusinessIntranet.BusinessIntranet.Models.Message;
-import com.BusinessIntranet.BusinessIntranet.Repositories.MessageRepository;
+import com.BusinessIntranet.BusinessIntranet.Message.Exceptions.MessageNotFoundException;
+import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
