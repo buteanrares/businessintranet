@@ -1,4 +1,4 @@
-package com.BusinessIntranet.BusinessIntranet.Exceptions;
+package com.BusinessIntranet.BusinessIntranet.Employee.Exceptions;
 
 public class EmployeeNotFoundException extends RuntimeException {
 

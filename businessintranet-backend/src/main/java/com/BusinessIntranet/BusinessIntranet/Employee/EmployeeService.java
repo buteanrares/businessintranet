@@ -1,8 +1,6 @@
-package com.BusinessIntranet.BusinessIntranet.Services;
+package com.BusinessIntranet.BusinessIntranet.Employee;
 
-import com.BusinessIntranet.BusinessIntranet.Exceptions.EmployeeNotFoundException;
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
-import com.BusinessIntranet.BusinessIntranet.Repositories.EmployeeRepository;
+import com.BusinessIntranet.BusinessIntranet.Employee.Exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;

@@ -1,4 +1,6 @@
-package com.BusinessIntranet.BusinessIntranet.Models;
+package com.BusinessIntranet.BusinessIntranet.Message;
+
+import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;

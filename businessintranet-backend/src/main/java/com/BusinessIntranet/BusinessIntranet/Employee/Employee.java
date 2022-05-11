@@ -1,8 +1,7 @@
-package com.BusinessIntranet.BusinessIntranet.Models;
+package com.BusinessIntranet.BusinessIntranet.Employee;
 
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
 import com.BusinessIntranet.BusinessIntranet.Enums.Department;
-import org.springframework.security.core.userdetails.UserDetailsService;
 
 import javax.persistence.*;
 import java.util.Set;

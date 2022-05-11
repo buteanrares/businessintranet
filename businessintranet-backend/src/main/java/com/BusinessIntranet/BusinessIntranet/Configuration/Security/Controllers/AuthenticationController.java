@@ -1,9 +1,9 @@
-package com.BusinessIntranet.BusinessIntranet.Controllers;
+package com.BusinessIntranet.BusinessIntranet.Configuration.Security.Controllers;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
-import com.BusinessIntranet.BusinessIntranet.Security.AuthenticationResponse;
-import com.BusinessIntranet.BusinessIntranet.Security.Utils.JwtUtil;
-import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
+import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
+import com.BusinessIntranet.BusinessIntranet.Configuration.Security.AuthenticationResponse;
+import com.BusinessIntranet.BusinessIntranet.Configuration.Security.Utils.JwtUtil;
+import com.BusinessIntranet.BusinessIntranet.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;

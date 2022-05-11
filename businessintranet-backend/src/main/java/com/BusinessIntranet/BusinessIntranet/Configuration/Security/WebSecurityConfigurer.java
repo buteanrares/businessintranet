@@ -1,6 +1,6 @@
-package com.BusinessIntranet.BusinessIntranet.Security;
+package com.BusinessIntranet.BusinessIntranet.Configuration.Security;
 
-import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
+import com.BusinessIntranet.BusinessIntranet.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;

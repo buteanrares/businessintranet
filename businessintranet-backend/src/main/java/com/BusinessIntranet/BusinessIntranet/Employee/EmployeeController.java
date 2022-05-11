@@ -1,7 +1,5 @@
-package com.BusinessIntranet.BusinessIntranet.Controllers;
+package com.BusinessIntranet.BusinessIntranet.Employee;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
-import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

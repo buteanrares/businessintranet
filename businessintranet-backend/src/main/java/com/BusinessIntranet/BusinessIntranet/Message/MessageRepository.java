@@ -1,7 +1,6 @@
-package com.BusinessIntranet.BusinessIntranet.Repositories;
+package com.BusinessIntranet.BusinessIntranet.Message;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Employee;
-import com.BusinessIntranet.BusinessIntranet.Models.Message;
+import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface MessageRepository extends JpaRepository<Message,Long> {

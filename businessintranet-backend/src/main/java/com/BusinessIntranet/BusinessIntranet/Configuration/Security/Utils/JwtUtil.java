@@ -1,4 +1,4 @@
-package com.BusinessIntranet.BusinessIntranet.Security.Utils;
+package com.BusinessIntranet.BusinessIntranet.Configuration.Security.Utils;
 
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
 import io.jsonwebtoken.Claims;

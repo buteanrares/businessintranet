@@ -1,7 +1,7 @@
-package com.BusinessIntranet.BusinessIntranet.Security.Filters;
+package com.BusinessIntranet.BusinessIntranet.Configuration.Security.Filters;
 
-import com.BusinessIntranet.BusinessIntranet.Security.Utils.JwtUtil;
-import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
+import com.BusinessIntranet.BusinessIntranet.Configuration.Security.Utils.JwtUtil;
+import com.BusinessIntranet.BusinessIntranet.Employee.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
