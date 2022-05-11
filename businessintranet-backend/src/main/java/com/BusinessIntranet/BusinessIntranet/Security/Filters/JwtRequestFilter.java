@@ -1,7 +1,7 @@
 package com.BusinessIntranet.BusinessIntranet.Security.Filters;
 
 import com.BusinessIntranet.BusinessIntranet.Security.Utils.JwtUtil;
-import com.BusinessIntranet.BusinessIntranet.Services.AccountService;
+import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -19,12 +19,12 @@ import java.io.IOException;
 @Component
 public class JwtRequestFilter extends OncePerRequestFilter {
 
-    private final AccountService accountService;
+    private final EmployeeService employeeService;
     private final JwtUtil jwtUtil;
 
     @Autowired
-    public JwtRequestFilter(AccountService accountService, JwtUtil jwtUtil) {
-        this.accountService = accountService;
+    public JwtRequestFilter(EmployeeService employeeService, JwtUtil jwtUtil) {
+        this.employeeService = employeeService;
         this.jwtUtil = jwtUtil;
     }
 
@@ -40,7 +40,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
         }
 
         if (email != null && SecurityContextHolder.getContext().getAuthentication() == null) {
-            UserDetails userDetails = accountService.loadUserByUsername(email);
+            UserDetails userDetails = employeeService.loadUserByUsername(email);
             if (jwtUtil.validateToken(jwt, userDetails)) {
                 UsernamePasswordAuthenticationToken usernamePasswordAuthenticationToken = new UsernamePasswordAuthenticationToken(
                         userDetails, null, userDetails.getAuthorities());

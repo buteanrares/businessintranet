@@ -13,7 +13,10 @@ public class BusinessIntranetApplication {
 
     public static void main(String[] args) {
         SpringApplication.run(BusinessIntranetApplication.class, args);
-        System.out.println("API VERSION: " + Configuration.applicationVersion);
+
+        //Base API information display
+        System.out.println("--------------------------------------------------");
+        System.out.println("    API VERSION: " + Configuration.applicationVersion);
     }
 
     @Bean

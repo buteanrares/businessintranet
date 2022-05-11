@@ -1,6 +1,7 @@
 package com.BusinessIntranet.BusinessIntranet.Models;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Entity(name="Messages")
 public class Message {
@@ -10,10 +11,24 @@ public class Message {
     private Long id;
 
     @OneToOne
-    private Account sender;
+    private Employee sender;
 
     @OneToOne
-    private Account receiver;
+    private Employee receiver;
 
     private String content;
+
+    private LocalDateTime timeSent;
+
+    public Message() {
+
+    }
+
+    public Message(Employee sender, Employee receiver, String content) {
+        this.sender = sender;
+        this.receiver = receiver;
+        this.content = content;
+        this.timeSent = LocalDateTime.now();
+    }
+
 }

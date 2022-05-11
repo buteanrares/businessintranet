@@ -1,6 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet.Security;
 
-import com.BusinessIntranet.BusinessIntranet.Services.AccountService;
+import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,23 +16,22 @@ import org.springframework.web.filter.CorsFilter;
 
 import javax.servlet.Filter;
 import java.util.Arrays;
-import java.util.Collections;
 
 @EnableWebSecurity
 public class WebSecurityConfigurer extends WebSecurityConfigurerAdapter {
 
-    private final AccountService accountService;
+    private final EmployeeService employeeService;
     private final Filter jwtRequestFilter;
 
     @Autowired
-    public WebSecurityConfigurer(AccountService accountService, Filter jwtRequestFilter) {
-        this.accountService = accountService;
+    public WebSecurityConfigurer(EmployeeService employeeService, Filter jwtRequestFilter) {
+        this.employeeService = employeeService;
         this.jwtRequestFilter = jwtRequestFilter;
     }
 
     @Override
     protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(accountService);
+        auth.userDetailsService(employeeService);
     }
 
     @Override
