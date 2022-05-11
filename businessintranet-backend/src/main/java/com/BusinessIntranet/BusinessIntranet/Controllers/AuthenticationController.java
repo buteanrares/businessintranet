@@ -1,9 +1,9 @@
 package com.BusinessIntranet.BusinessIntranet.Controllers;
 
-import com.BusinessIntranet.BusinessIntranet.Models.Account;
+import com.BusinessIntranet.BusinessIntranet.Models.Employee;
 import com.BusinessIntranet.BusinessIntranet.Security.AuthenticationResponse;
 import com.BusinessIntranet.BusinessIntranet.Security.Utils.JwtUtil;
-import com.BusinessIntranet.BusinessIntranet.Services.AccountService;
+import com.BusinessIntranet.BusinessIntranet.Services.EmployeeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -18,26 +18,26 @@ import org.springframework.web.bind.annotation.RestController;
 public class AuthenticationController {
 
     private final AuthenticationManager authenticationManager;
-    private final AccountService accountService;
+    private final EmployeeService employeeService;
     private final JwtUtil jwtTokenUtil;
 
     @Autowired
-    public AuthenticationController(AuthenticationManager authenticationManager, AccountService accountService, JwtUtil jwtTokenUtil) {
+    public AuthenticationController(AuthenticationManager authenticationManager, EmployeeService employeeService, JwtUtil jwtTokenUtil) {
         this.authenticationManager = authenticationManager;
-        this.accountService = accountService;
+        this.employeeService = employeeService;
         this.jwtTokenUtil = jwtTokenUtil;
     }
 
     @PostMapping("/authenticate")
-    public ResponseEntity<?> createAuthenticationToken(@RequestBody Account account) throws Exception {
+    public ResponseEntity<?> createAuthenticationToken(@RequestBody Employee employee) throws Exception {
         try {
             authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(account.getPrimaryEmail(), account.getPassword())
+                    new UsernamePasswordAuthenticationToken(employee.getEmail(), employee.getPassword())
             );
         } catch (BadCredentialsException e) {
             throw new Exception("Incorrect username or password", e);
         }
-        final UserDetails userDetails = accountService.loadUserByUsername(account.getPrimaryEmail());
+        final UserDetails userDetails = employeeService.loadUserByUsername(employee.getEmail());
         final String jwt = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new AuthenticationResponse(jwt));
     }

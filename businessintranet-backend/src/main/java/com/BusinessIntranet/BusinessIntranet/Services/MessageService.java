@@ -1,7 +1,7 @@
 package com.BusinessIntranet.BusinessIntranet.Services;
 
 import com.BusinessIntranet.BusinessIntranet.Exceptions.MessageNotFoundException;
-import com.BusinessIntranet.BusinessIntranet.Models.Account;
+import com.BusinessIntranet.BusinessIntranet.Models.Employee;
 import com.BusinessIntranet.BusinessIntranet.Models.Message;
 import com.BusinessIntranet.BusinessIntranet.Repositories.MessageRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,11 +31,11 @@ public class MessageService {
                 .orElseThrow(() -> new MessageNotFoundException("Message with id " + id + "does not exist."));
     }
 
-    public Iterable<Message> findAllMessagesBySender(Account sender) {
+    public Iterable<Message> findAllMessagesBySender(Employee sender) {
         return this.messageRepository.findAllBySender(sender);
     }
 
-    public Iterable<Message> findAllMessagesByReceiver(Account receiver) {
+    public Iterable<Message> findAllMessagesByReceiver(Employee receiver) {
         return this.messageRepository.findAllByReceiver(receiver);
     }
 
