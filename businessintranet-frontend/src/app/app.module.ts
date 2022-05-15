@@ -13,6 +13,12 @@ import { EmployeesComponent } from './components/employees/employees.component';
 import { CalendarComponent } from './components/calendar/calendar.component';
 import { MeetingsComponent } from './components/meetings/meetings.component';
 import { DiscussionsBoardComponent } from './components/discussions-board/discussions-board.component';
+import { CommonModule } from '@angular/common';
+import { FlatpickrModule } from 'angularx-flatpickr';
+import { CalendarModule, DateAdapter } from 'angular-calendar';
+import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
+import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -32,6 +38,14 @@ import { DiscussionsBoardComponent } from './components/discussions-board/discus
     HttpClientModule,
     DevExtremeModule,
     DxButtonModule,
+    CommonModule,
+    FormsModule,
+    NgbModalModule,
+    CalendarModule.forRoot({
+      provide: DateAdapter,
+      useFactory: adapterFactory,
+    }),
+    FlatpickrModule.forRoot()
   ],
   providers: [],
   bootstrap: [AppComponent]
