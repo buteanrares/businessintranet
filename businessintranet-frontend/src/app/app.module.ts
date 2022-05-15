@@ -18,6 +18,8 @@ import { FlatpickrModule } from 'angularx-flatpickr';
 import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
+import { DiscussionMessageComponent } from './components/discussions-board/discussion-message/discussion-message.component';
+import { DiscussionSidebarComponent } from './components/discussions-board/discussion-sidebar/discussion-sidebar.component';
 
 
 @NgModule({
@@ -30,6 +32,8 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
     CalendarComponent,
     MeetingsComponent,
     DiscussionsBoardComponent,
+    DiscussionMessageComponent,
+    DiscussionSidebarComponent,
   ],
   imports: [
     BrowserModule,
