@@ -1,1 +1,7 @@
+<app-discussion-sidebar></app-discussion-sidebar>
 <p>discussions-board works!</p>
+<div class="messages-wrapper">
+    <label *ngFor="let message of messages">
+        <app-discussion-message [message]="message"></app-discussion-message>
+    </label>
+</div>
