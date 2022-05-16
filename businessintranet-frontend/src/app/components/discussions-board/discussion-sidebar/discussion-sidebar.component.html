@@ -1,1 +1,8 @@
-<p>discussion-sidebar works!</p>
+<div class="discussion-sidebar-wrapper">
+    <p class="topics-header">Topics:</p>
+    <ul class="topicsbar" routerLinkActive="active">
+        <li class="topic-items" *ngFor="let topic of topics">
+            <a class="topic-link">{{ topic.title }}</a>
+        </li>
+    </ul>
+</div>
