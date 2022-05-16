@@ -8,20 +8,14 @@ import { event } from 'devextreme/events';
 })
 export class NavigationMenuComponent implements OnInit {
 
-  tabs = ['tab1', 'tab2', 'tab3', 'tab4']
-
   constructor() { }
 
   ngOnInit(): void {
+
   }
 
   onSelectTab(e: event) {
     console.log(e);
-  }
-
-  onSelectTab2(item: any): boolean {
-    console.log(item);
-    return true;
   }
 
 }
