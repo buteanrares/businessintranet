@@ -8,7 +8,7 @@ import { MessageBaseModel } from 'src/app/models/discussion-board-models/message
 })
 export class DiscussionMessageComponent implements OnInit {
 
-  @Input() message?: MessageBaseModel;
+  @Input() message: MessageBaseModel;
 
   constructor() { }
 
