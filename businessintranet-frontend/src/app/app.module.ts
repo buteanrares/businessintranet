@@ -33,6 +33,8 @@ import { DiscussionSidebarComponent } from './components/discussions-board/discu
     CalendarComponent,
     MeetingsComponent,
     DiscussionsBoardComponent,
+    DiscussionSidebarComponent,
+    DiscussionMessageComponent
   ],
   imports: [
     BrowserModule,
