@@ -1,3 +1,15 @@
 .message-wrapper {
     display: block;
+    width: 60%;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #2d9587;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sender-datetime-information {
+    font-style: italic;
+    padding-bottom: 15px;
+    display: block;
 }

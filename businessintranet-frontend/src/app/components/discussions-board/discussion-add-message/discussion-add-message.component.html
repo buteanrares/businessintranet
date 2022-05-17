@@ -1,0 +1,12 @@
+<div class="add-message-wrapper">
+    <dx-text-area
+        [height]="100"
+        [(value)]="messageContent"
+        [label]="postMessagePlaceholder"
+        labelMode="link"
+        [maxLength]="1000"
+    ></dx-text-area>
+    <dx-button class="post-message-button" [width]="50" [height]="30">
+        Post
+    </dx-button>
+</div>
