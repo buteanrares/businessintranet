@@ -31,17 +31,17 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String email, Set<String> emailGroups, String firstName, String lastName, String phone, String jobTitle, Department department, Employee manager) {
+    public Employee(String email, Set<String> emailGroups, String password, String firstName, String lastName, String imageUrl, String phone, String jobTitle, Department department, Employee manager) {
         this.email = email;
         this.emailGroups = emailGroups;
-        this.password = Configuration.INITIAL_PASSWORD;
+        this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.imageUrl = Configuration.INITIAL_IMAGE_URL;
+        this.imageUrl = imageUrl;
         this.phone = phone;
         this.jobTitle = jobTitle;
         this.department = department;
-        this.manager=manager;
+        this.manager = manager;
     }
 
     public String getFirstName() {
