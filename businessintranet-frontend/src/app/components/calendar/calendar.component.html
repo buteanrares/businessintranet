@@ -1,6 +1,8 @@
 <div class="row text-center">
     <div class="col-md-4">
-        <h3>{{ viewDate | calendarDate: view + "ViewTitle":"en" }}</h3>
+        <h3 class="month-year-h3">
+            {{ viewDate | calendarDate: view + "ViewTitle":"en" }}
+        </h3>
     </div>
     <div class="date-control-button-container">
         <div class="btn-group">
