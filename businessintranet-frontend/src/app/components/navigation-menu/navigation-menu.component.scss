@@ -1,6 +1,7 @@
 ul {
     list-style-type: none;
-    margin-top: 0;
+    margin-top: -9px;
+    margin-left: -9px;
     padding: 0;
     margin-bottom: 30px;
     overflow: hidden;
@@ -20,7 +21,7 @@ li a {
 }
 
 li a:hover:not(.active) {
-    background-color: teal;
+    background-color: #2d9587;
 }
 
 .active {

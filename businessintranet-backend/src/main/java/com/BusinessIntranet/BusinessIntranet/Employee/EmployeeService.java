@@ -20,7 +20,7 @@ public class EmployeeService implements UserDetailsService {
     @Autowired
     public EmployeeService(EmployeeRepository employeeRepository, PasswordEncoder passwordEncoder) {
         this.employeeRepository = employeeRepository;
-        this.passwordEncoder=passwordEncoder;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Employee createEmployee(Employee employee) {
