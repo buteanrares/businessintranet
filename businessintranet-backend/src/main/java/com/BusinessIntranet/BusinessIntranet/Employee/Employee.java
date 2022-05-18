@@ -1,14 +1,17 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
-import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
-import com.BusinessIntranet.BusinessIntranet.Enums.Department;
+import com.BusinessIntranet.BusinessIntranet.Enums.EnumDepartment;
+import com.BusinessIntranet.BusinessIntranet.Enums.EnumPermission;
+import com.BusinessIntranet.BusinessIntranet.Enums.EnumRole;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.Collection;
 import java.util.Set;
 
 
 @Entity(name = "Employees")
-public class Employee {
+public class Employee implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -23,15 +26,19 @@ public class Employee {
     private String imageUrl;
     private String phone;
     private String jobTitle;
-    @Enumerated(EnumType.STRING)
-    private Department department;
     @ManyToOne
     private Employee manager;
+    @Enumerated(EnumType.STRING)
+    private EnumDepartment department;
+    @ElementCollection
+    private Set<String> roles;
+    @ElementCollection
+    private Set<String> permissions;
 
     public Employee() {
     }
 
-    public Employee(String email, Set<String> emailGroups, String password, String firstName, String lastName, String imageUrl, String phone, String jobTitle, Department department, Employee manager) {
+    public Employee(String email, Set<String> emailGroups, String password, String firstName, String lastName, String imageUrl, String phone, String jobTitle, EnumDepartment department, Employee manager) {
         this.email = email;
         this.emailGroups = emailGroups;
         this.password = password;
@@ -92,12 +99,12 @@ public class Employee {
         this.phone = phone;
     }
 
-    public Department getDepartment() {
+    public EnumDepartment getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartment(EnumDepartment enumDepartment) {
+        this.department = enumDepartment;
     }
 
     public String getEmail() {
@@ -130,5 +137,21 @@ public class Employee {
 
     public void setManager(Employee manager) {
         this.manager = manager;
+    }
+
+    public Set<String> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<String> roles) {
+        this.roles = roles;
+    }
+
+    public Set<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<String> permissions) {
+        this.permissions = permissions;
     }
 }

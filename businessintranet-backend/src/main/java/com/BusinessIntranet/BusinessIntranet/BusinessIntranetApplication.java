@@ -1,7 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet;
 
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
-import com.BusinessIntranet.BusinessIntranet.Configuration.Security.Utils.JwtUtil;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
@@ -17,11 +16,6 @@ public class BusinessIntranetApplication {
         //Base API information display
         System.out.println("--------------------------------------------------");
         System.out.println("    API VERSION: " + Configuration.applicationVersion);
-    }
-
-    @Bean
-    public JwtUtil jwtUtil() {
-        return new JwtUtil();
     }
 
     @Bean
