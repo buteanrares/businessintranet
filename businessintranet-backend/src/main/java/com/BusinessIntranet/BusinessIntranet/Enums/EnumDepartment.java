@@ -1,6 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet.Enums;
 
-public enum Department {
+public enum EnumDepartment {
     BUSINESS_DEVELOPMENT,
     HUMAN_RESOURCES,
     ACCOUNTS_AND_FINANCE,

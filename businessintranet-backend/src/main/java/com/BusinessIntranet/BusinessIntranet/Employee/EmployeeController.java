@@ -3,6 +3,7 @@ package com.BusinessIntranet.BusinessIntranet.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public ResponseEntity<List<Employee>> getEmployees() {
         List<Employee> employees = this.employeeService.findAllEmployees();
         return new ResponseEntity<>(employees, HttpStatus.OK);
