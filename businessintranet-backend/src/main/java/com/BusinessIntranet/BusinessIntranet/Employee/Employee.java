@@ -1,13 +1,16 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
+import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
 import com.BusinessIntranet.BusinessIntranet.Enums.EnumDepartment;
-import com.BusinessIntranet.BusinessIntranet.Enums.EnumPermission;
 import com.BusinessIntranet.BusinessIntranet.Enums.EnumRole;
+import com.BusinessIntranet.BusinessIntranet.Role.Role;
+import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Collection;
-import java.util.Set;
+
+import java.util.*;
+import java.util.stream.Collectors;
 
 
 @Entity(name = "Employees")
@@ -30,25 +33,26 @@ public class Employee implements Serializable{
     private Employee manager;
     @Enumerated(EnumType.STRING)
     private EnumDepartment department;
-    @ElementCollection
-    private Set<String> roles;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = new HashSet<>();
     @ElementCollection
     private Set<String> permissions;
 
     public Employee() {
     }
 
-    public Employee(String email, Set<String> emailGroups, String password, String firstName, String lastName, String imageUrl, String phone, String jobTitle, EnumDepartment department, Employee manager) {
-        this.email = email;
-        this.emailGroups = emailGroups;
+    public Employee(String firstName, String lastName, String password, Set<String> emailGroups, String phone, String jobTitle, EnumDepartment department, Employee manager) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.email = firstName+"."+lastName+ Configuration.EMAIL_DOMAIN;
         this.password = password;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.imageUrl = imageUrl;
-        this.phone = phone;
-        this.jobTitle = jobTitle;
-        this.department = department;
-        this.manager = manager;
+        this.emailGroups=emailGroups;
+        this.phone=phone;
+        this.imageUrl=Configuration.INITIAL_IMAGE_URL;
+        this.jobTitle=jobTitle;
+        this.department=department;
+        this.manager=manager;
     }
 
     public String getFirstName() {
@@ -139,12 +143,16 @@ public class Employee implements Serializable{
         this.manager = manager;
     }
 
-    public Set<String> getRoles() {
+    public Set<Role> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<String> roles) {
+    public void setRoles(Set<Role> roles) {
         this.roles = roles;
+    }
+
+    public void addRole(Role role){
+        this.roles.add(role);
     }
 
     public Set<String> getPermissions() {

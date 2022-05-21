@@ -18,8 +18,4 @@ public class BusinessIntranetApplication {
         System.out.println("    API VERSION: " + Configuration.applicationVersion);
     }
 
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
 }

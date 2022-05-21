@@ -6,7 +6,7 @@ import com.BusinessIntranet.BusinessIntranet.SharedModels.Message;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity(name="Messages")
+@Entity()
 public class PrivateMessage extends Message {
 
     @OneToOne
