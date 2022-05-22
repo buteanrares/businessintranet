@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { EmployeeBaseModel } from 'src/app/models/employee/employee-base-model';
+import { EmployeesService } from './service/employees.service';
 
 @Component({
   selector: 'app-employees',
@@ -6,10 +8,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./employees.component.scss']
 })
 export class EmployeesComponent implements OnInit {
+  employees: EmployeeBaseModel[];
 
-  constructor() { }
+  constructor(private employeeService: EmployeesService) { }
 
   ngOnInit(): void {
+    this.employeeService.getAllEmployees().subscribe(
+      rsp => this.employees = rsp
+    );
+    console.log(this.employees);
   }
 
 }

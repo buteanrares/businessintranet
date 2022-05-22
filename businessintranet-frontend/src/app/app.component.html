@@ -1,2 +1,2 @@
-<app-navigation-menu></app-navigation-menu>
+<app-navigation-menu *ngIf="authenticationService.isLoggedIn"></app-navigation-menu>
 <!-- <footer class="app-footer">{{ title }}</footer> -->
