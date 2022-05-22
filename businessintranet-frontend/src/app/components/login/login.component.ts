@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthenticationService } from "../../service/authentication.service";
+import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 import { LogInCredentialsModel } from "../../models/login-models/login-credentials-model"
 
 @Component({
@@ -16,7 +17,7 @@ export class LoginComponent implements OnInit {
   invalidLogin = false
   loginSuccess = false
 
-  constructor(private authenticationService: AuthenticationService) {
+  constructor(private router: Router, private authenticationService: AuthenticationService) {
   }
 
   ngOnInit(): void {
@@ -24,10 +25,6 @@ export class LoginComponent implements OnInit {
 
   handleLogin() {
     this.authenticationService.login({ email: this.username, password: this.password }).subscribe(
-      {
-        next: () => { console.log("next") },        // nextHandler
-        error: () => { console.log("error") },       // errorHandler
-        complete: () => { console.log("complete") },    // completeHandler
-      });
+      () => this.router.navigate(['/home']));
   }
 }
