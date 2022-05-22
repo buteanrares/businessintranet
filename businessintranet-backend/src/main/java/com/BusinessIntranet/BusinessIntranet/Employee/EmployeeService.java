@@ -1,11 +1,13 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import com.BusinessIntranet.BusinessIntranet.Employee.Exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService {
@@ -24,6 +26,10 @@ public class EmployeeService {
 
     public List<Employee> findAllEmployees() {
         return this.employeeRepository.findAll();
+    }
+
+    public List<EmployeeDTO> findAllEmployeesDTO(){
+        return this.employeeRepository.findAll().stream().map(Employee::toEmployeeDTO).collect(Collectors.toList());
     }
 
     public Employee findEmployeeById(Long id) {
@@ -49,4 +55,5 @@ public class EmployeeService {
     public boolean employeeEmailExists(String email) {
         return employeeRepository.existsEmployeeByEmail(email);
     }
+
 }

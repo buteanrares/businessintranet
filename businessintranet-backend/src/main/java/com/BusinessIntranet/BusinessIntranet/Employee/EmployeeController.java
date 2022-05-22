@@ -1,5 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,6 @@ import java.util.List;
 
 
 @RestController
-@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "api/employee")
 public class EmployeeController {
     private final EmployeeService employeeService;
@@ -21,8 +21,15 @@ public class EmployeeController {
     }
 
     @GetMapping("/all")
+    @PreAuthorize("hasRole('ROLE_MANAGER')")
     public ResponseEntity<List<Employee>> getEmployees() {
         List<Employee> employees = this.employeeService.findAllEmployees();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/dto")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesDTO() {
+        List<EmployeeDTO> employees = this.employeeService.findAllEmployeesDTO();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 

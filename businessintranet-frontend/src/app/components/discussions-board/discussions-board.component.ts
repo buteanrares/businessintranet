@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageBaseModel } from 'src/app/models/discussion-board-models/message-base-model';
 import { TopicBaseModel } from 'src/app/models/discussion-board-models/topic-base-model';
-import { EmployeeBaseModel } from 'src/app/models/employee/employee-base-model';
+import { EmployeeBaseModel } from 'src/app/models/employee-models/employee-base-model';
 
 @Component({
   selector: 'app-discussions-board',

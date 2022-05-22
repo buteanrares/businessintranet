@@ -5,13 +5,11 @@ import { EmployeesComponent } from "../components/employees/employees.component"
 import { HomeComponent } from "../components/home/home.component";
 import { LoginComponent } from "../components/login/login.component";
 import { MeetingsComponent } from "../components/meetings/meetings.component";
-import { AuthenticationGuard } from "../guards/authentication.guard";
 
 export const routerConfig: Routes = [
   {
     path: 'login',
-    component: LoginComponent,
-    //canActivate: [AuthenticationGuard]
+    component: LoginComponent
   },
   {
     path: 'home',
@@ -35,7 +33,7 @@ export const routerConfig: Routes = [
   },
   {
     path: '',
-    redirectTo: '/login',
+    redirectTo: '/home',
     pathMatch: 'full'
   },
   //TODO: uncomment when app is stable

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeBaseModel } from 'src/app/models/employee/employee-base-model';
+import { EmployeeBaseModel } from 'src/app/models/employee-models/employee-base-model';
 
 @Component({
   selector: 'app-home',

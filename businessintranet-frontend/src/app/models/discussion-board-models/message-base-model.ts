@@ -1,4 +1,4 @@
-import { EmployeeBaseModel } from "../employee/employee-base-model";
+import { EmployeeBaseModel } from "../employee-models/employee-base-model";
 import { TopicBaseModel } from "./topic-base-model";
 
 export class MessageBaseModel {

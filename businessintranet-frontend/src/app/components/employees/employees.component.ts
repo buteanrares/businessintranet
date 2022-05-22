@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { EmployeeBaseModel } from 'src/app/models/employee/employee-base-model';
+import { EmployeeBaseModel } from 'src/app/models/employee-models/employee-base-model';
 import { EmployeesService } from './service/employees.service';
 
 @Component({
@@ -16,7 +16,6 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.getAllEmployees().subscribe(
       rsp => this.employees = rsp
     );
-    console.log(this.employees);
   }
 
 }

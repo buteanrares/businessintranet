@@ -1,19 +1,17 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import com.BusinessIntranet.BusinessIntranet.Enums.EnumDepartment;
-import com.BusinessIntranet.BusinessIntranet.Enums.EnumRole;
 import com.BusinessIntranet.BusinessIntranet.Role.Role;
-import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
-import java.util.*;
-import java.util.stream.Collectors;
 
-
-@Entity(name = "Employees")
+@Entity
 public class Employee implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -151,7 +149,7 @@ public class Employee implements Serializable{
         this.roles = roles;
     }
 
-    public void addRole(Role role){
+    public void addRole(Role role) {
         this.roles.add(role);
     }
 
@@ -161,5 +159,16 @@ public class Employee implements Serializable{
 
     public void setPermissions(Set<String> permissions) {
         this.permissions = permissions;
+    }
+
+    public EmployeeDTO toEmployeeDTO() {
+        return new EmployeeDTO(
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.phone,
+                this.email,
+                this.jobTitle
+        );
     }
 }

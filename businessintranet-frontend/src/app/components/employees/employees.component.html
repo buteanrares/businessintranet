@@ -1,4 +1,10 @@
-<p>employees works!</p>
 <div class="employees-wrapper">
-    <label>{{ employees }}</label>
+    <dx-data-grid class="employees-data-grid" [dataSource]="employees">
+        <dxi-column dataField="id" width="200px"></dxi-column>
+        <dxi-column dataField="firstName"></dxi-column>
+        <dxi-column dataField="lastName"></dxi-column>
+        <dxi-column dataField="email"></dxi-column>
+        <dxi-column dataField="phone"></dxi-column>
+        <dxi-column dataField="jobTitle"></dxi-column>
+    </dx-data-grid>
 </div>
