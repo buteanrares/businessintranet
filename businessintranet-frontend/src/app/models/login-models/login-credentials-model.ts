@@ -1,4 +1,4 @@
 export class LogInCredentialsModel {
-  email: string;
+  username: string;
   password: string;
 }

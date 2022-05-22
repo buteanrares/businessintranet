@@ -22,9 +22,6 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiscussionMessageComponent } from './components/discussions-board/discussion-message/discussion-message.component';
 import { DiscussionSidebarComponent } from './components/discussions-board/discussion-sidebar/discussion-sidebar.component';
 import { DiscussionAddMessageComponent } from './components/discussions-board/discussion-add-message/discussion-add-message.component';
-import { TokenInterceptorProvider } from './service/http-interceptors/token-interceptor.service';
-import { EmployeesService } from './components/employees/service/employees.service';
-import { EndpointConfig } from './configurations/endpoint-config';
 
 
 @NgModule({
@@ -58,11 +55,7 @@ import { EndpointConfig } from './configurations/endpoint-config';
     }),
     FlatpickrModule.forRoot()
   ],
-  providers: [
-    EndpointConfig,
-    TokenInterceptorProvider,
-    EmployeesService,
-  ],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule {
