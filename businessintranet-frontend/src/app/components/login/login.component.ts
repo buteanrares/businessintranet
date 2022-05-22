@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
   }
 
   handleLogin() {
-    this.authenticationService.login({ username: this.username, password: this.password }).subscribe(
+    this.authenticationService.login({ email: this.username, password: this.password }).subscribe(
       {
         next: () => { console.log("next") },        // nextHandler
         error: () => { console.log("error") },       // errorHandler
