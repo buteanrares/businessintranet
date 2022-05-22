@@ -13,10 +13,10 @@ export class AuthenticationService {
   }
 
   login(employeeModel: LogInCredentialsModel) {
-    console.log("login with " + employeeModel.username + " " + employeeModel.password);
+    console.log("login with " + employeeModel.email + " " + employeeModel.password);
     return this.httpClient.post(environment.hostUrl + `/authenticate`,
-      { headers: { authorization: this.createBasicAuthToken(employeeModel.username, employeeModel.password) } }).pipe(map((res) => {
-        this.registerSuccessfulLogin(employeeModel.username, employeeModel.password);
+      { headers: { authorization: this.createBasicAuthToken(employeeModel.email, employeeModel.password) } }).pipe(map((res) => {
+        this.registerSuccessfulLogin(employeeModel.email, employeeModel.password);
       }));
   }
 

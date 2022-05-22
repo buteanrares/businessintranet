@@ -8,12 +8,12 @@ import { MeetingsComponent } from "../components/meetings/meetings.component";
 
 export const routerConfig: Routes = [
   {
-    path: 'home',
-    component: HomeComponent
-  },
-  {
     path: 'login',
     component: LoginComponent
+  },
+  {
+    path: 'home',
+    component: HomeComponent
   },
   {
     path: 'employees',
