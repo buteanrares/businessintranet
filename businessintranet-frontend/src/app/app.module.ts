@@ -21,6 +21,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { DiscussionMessageComponent } from './components/discussions-board/discussion-message/discussion-message.component';
 import { DiscussionSidebarComponent } from './components/discussions-board/discussion-sidebar/discussion-sidebar.component';
+import { DiscussionAddMessageComponent } from './components/discussions-board/discussion-add-message/discussion-add-message.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { DiscussionSidebarComponent } from './components/discussions-board/discu
     MeetingsComponent,
     DiscussionsBoardComponent,
     DiscussionSidebarComponent,
-    DiscussionMessageComponent
+    DiscussionMessageComponent,
+    DiscussionAddMessageComponent
   ],
   imports: [
     BrowserModule,

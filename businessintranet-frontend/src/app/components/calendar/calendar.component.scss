@@ -1,5 +1,7 @@
-h3 {
-    margin: 0 0 10px;
+.month-year-h3 {
+    margin: 45px 0 10px;
+    justify-content: center;
+    display: flex;
 }
 
 pre {
@@ -12,6 +14,7 @@ pre {
     width: 12%;
     padding: 10px;
 }
+
 .date-control-button {
     margin-left: 10px;
     margin-right: 10px;

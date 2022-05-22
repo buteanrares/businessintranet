@@ -9,7 +9,7 @@ import { TopicBaseModel } from 'src/app/models/discussion-board-models/topic-bas
 export class DiscussionSidebarComponent implements OnInit {
 
   topics: TopicBaseModel[] = [
-    { id: 0, title: 'Timesheets' },
+    { id: 0, title: 'Timesheets', children: [{ id: 0, title: 'Timetracking' }] },
     { id: 1, title: 'Issues' },
     { id: 2, title: 'Vacations' },
     { id: 3, title: 'placeholder' },

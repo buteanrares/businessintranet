@@ -5,5 +5,5 @@ export class MessageBaseModel {
   sender: EmployeeBaseModel;
   content: string;
   topic: TopicBaseModel;
-  datetime: Date;
+  timeSent: Date;
 }
