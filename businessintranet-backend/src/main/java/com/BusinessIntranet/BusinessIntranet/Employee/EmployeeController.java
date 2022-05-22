@@ -1,5 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +22,12 @@ public class EmployeeController {
     @GetMapping("/all")
     public ResponseEntity<List<Employee>> getEmployees() {
         List<Employee> employees = this.employeeService.findAllEmployees();
+        return new ResponseEntity<>(employees, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/dto")
+    public ResponseEntity<List<EmployeeDTO>> getEmployeesDTO() {
+        List<EmployeeDTO> employees = this.employeeService.findAllEmployeesDTO();
         return new ResponseEntity<>(employees, HttpStatus.OK);
     }
 

@@ -1,5 +1,6 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import com.BusinessIntranet.BusinessIntranet.Employee.Exceptions.EmployeeNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.User;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class EmployeeService implements UserDetailsService {
@@ -31,6 +33,10 @@ public class EmployeeService implements UserDetailsService {
         return this.employeeRepository.findAll();
     }
 
+    public List<EmployeeDTO> findAllEmployeesDTO(){
+        return this.employeeRepository.findAll().stream().map(Employee::toEmployeeDTO).collect(Collectors.toList());
+    }
+
     public Employee findEmployeeById(Long id) {
         return this.employeeRepository.findById(id)
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee with id " + id + " does not exist."));
@@ -49,4 +55,5 @@ public class EmployeeService implements UserDetailsService {
                 .orElseThrow(() -> new EmployeeNotFoundException("Employee with email " + email + " does not exist."));
         return new User(employee.getEmail(), employee.getPassword(), new ArrayList<>()); // TODO: Define roles
     }
+
 }

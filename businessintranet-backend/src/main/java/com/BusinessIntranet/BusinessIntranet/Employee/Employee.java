@@ -1,14 +1,18 @@
 package com.BusinessIntranet.BusinessIntranet.Employee;
 
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
-import com.BusinessIntranet.BusinessIntranet.Enums.Department;
+import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
+import com.BusinessIntranet.BusinessIntranet.Enums.EnumDepartment;
+import com.BusinessIntranet.BusinessIntranet.Role.Role;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.util.HashSet;
 import java.util.Set;
 
 
-@Entity(name = "Employees")
-public class Employee {
+@Entity
+public class Employee implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -31,17 +35,17 @@ public class Employee {
     public Employee() {
     }
 
-    public Employee(String email, Set<String> emailGroups, String firstName, String lastName, String phone, String jobTitle, Department department, Employee manager) {
-        this.email = email;
-        this.emailGroups = emailGroups;
-        this.password = Configuration.INITIAL_PASSWORD;
+    public Employee(String firstName, String lastName, String password, Set<String> emailGroups, String phone, String jobTitle, EnumDepartment department, Employee manager) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.imageUrl = Configuration.INITIAL_IMAGE_URL;
+        this.email = firstName + "." + lastName + Configuration.EMAIL_DOMAIN;
+        this.password = password;
+        this.emailGroups = emailGroups;
         this.phone = phone;
+        this.imageUrl = Configuration.INITIAL_IMAGE_URL;
         this.jobTitle = jobTitle;
         this.department = department;
-        this.manager=manager;
+        this.manager = manager;
     }
 
     public String getFirstName() {
@@ -130,5 +134,36 @@ public class Employee {
 
     public void setManager(Employee manager) {
         this.manager = manager;
+    }
+
+    public Set<Role> getRoles() {
+        return roles;
+    }
+
+    public void setRoles(Set<Role> roles) {
+        this.roles = roles;
+    }
+
+    public void addRole(Role role) {
+        this.roles.add(role);
+    }
+
+    public Set<String> getPermissions() {
+        return permissions;
+    }
+
+    public void setPermissions(Set<String> permissions) {
+        this.permissions = permissions;
+    }
+
+    public EmployeeDTO toEmployeeDTO() {
+        return new EmployeeDTO(
+                this.id,
+                this.firstName,
+                this.lastName,
+                this.phone,
+                this.email,
+                this.jobTitle
+        );
     }
 }
