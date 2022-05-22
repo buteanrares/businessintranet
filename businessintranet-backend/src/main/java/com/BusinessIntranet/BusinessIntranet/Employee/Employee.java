@@ -12,7 +12,7 @@ import java.util.Set;
 
 
 @Entity
-public class Employee implements Serializable {
+public class Employee implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(nullable = false, updatable = false)
@@ -27,25 +27,30 @@ public class Employee implements Serializable {
     private String imageUrl;
     private String phone;
     private String jobTitle;
-    @Enumerated(EnumType.STRING)
-    private Department department;
     @ManyToOne
     private Employee manager;
+    @Enumerated(EnumType.STRING)
+    private EnumDepartment department;
+    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @Enumerated(EnumType.STRING)
+    private Set<Role> roles = new HashSet<>();
+    @ElementCollection
+    private Set<String> permissions;
 
     public Employee() {
     }
 
     public Employee(String firstName, String lastName, String password, Set<String> emailGroups, String phone, String jobTitle, EnumDepartment department, Employee manager) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.email = firstName + "." + lastName + Configuration.EMAIL_DOMAIN;
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.email = firstName+"."+lastName+ Configuration.EMAIL_DOMAIN;
         this.password = password;
-        this.emailGroups = emailGroups;
-        this.phone = phone;
-        this.imageUrl = Configuration.INITIAL_IMAGE_URL;
-        this.jobTitle = jobTitle;
-        this.department = department;
-        this.manager = manager;
+        this.emailGroups=emailGroups;
+        this.phone=phone;
+        this.imageUrl=Configuration.INITIAL_IMAGE_URL;
+        this.jobTitle=jobTitle;
+        this.department=department;
+        this.manager=manager;
     }
 
     public String getFirstName() {
@@ -96,12 +101,12 @@ public class Employee implements Serializable {
         this.phone = phone;
     }
 
-    public Department getDepartment() {
+    public EnumDepartment getDepartment() {
         return department;
     }
 
-    public void setDepartment(Department department) {
-        this.department = department;
+    public void setDepartment(EnumDepartment enumDepartment) {
+        this.department = enumDepartment;
     }
 
     public String getEmail() {
