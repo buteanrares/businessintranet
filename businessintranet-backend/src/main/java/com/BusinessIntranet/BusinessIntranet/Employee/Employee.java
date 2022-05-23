@@ -3,7 +3,7 @@ package com.BusinessIntranet.BusinessIntranet.Employee;
 import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
 import com.BusinessIntranet.BusinessIntranet.Employee.DTOs.EmployeeDTO;
 import com.BusinessIntranet.BusinessIntranet.Enums.EnumDepartment;
-import com.BusinessIntranet.BusinessIntranet.Role.Role;
+import com.BusinessIntranet.BusinessIntranet.Enums.EnumRole;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -27,20 +27,17 @@ public class Employee implements Serializable{
     private String imageUrl;
     private String phone;
     private String jobTitle;
-    @ManyToOne
-    private Employee manager;
+    private int managerId;
     @Enumerated(EnumType.STRING)
     private EnumDepartment department;
-    @ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-    @Enumerated(EnumType.STRING)
-    private Set<Role> roles = new HashSet<>();
     @ElementCollection
-    private Set<String> permissions;
+    private Set<String> roles = new HashSet<>();
+    private boolean isAccountLocked;
 
     public Employee() {
     }
 
-    public Employee(String firstName, String lastName, String password, Set<String> emailGroups, String phone, String jobTitle, EnumDepartment department, Employee manager) {
+    public Employee(String firstName, String lastName, String password, Set<String> emailGroups, String phone, String jobTitle, EnumDepartment department, int managerId) {
         this.firstName=firstName;
         this.lastName=lastName;
         this.email = firstName+"."+lastName+ Configuration.EMAIL_DOMAIN;
@@ -50,7 +47,21 @@ public class Employee implements Serializable{
         this.imageUrl=Configuration.INITIAL_IMAGE_URL;
         this.jobTitle=jobTitle;
         this.department=department;
-        this.manager=manager;
+        this.managerId=managerId;
+    }
+
+    public Employee(String firstName, String lastName, String password, Set<String> emailGroups, Set<String> roles, String phone, String jobTitle, EnumDepartment department, int managerId) {
+        this.firstName=firstName;
+        this.lastName=lastName;
+        this.email = firstName+"."+lastName+ Configuration.EMAIL_DOMAIN;
+        this.password = password;
+        this.emailGroups=emailGroups;
+        this.roles=roles;
+        this.phone=phone;
+        this.imageUrl=Configuration.INITIAL_IMAGE_URL;
+        this.jobTitle=jobTitle;
+        this.department=department;
+        this.managerId=managerId;
     }
 
     public String getFirstName() {
@@ -133,32 +144,32 @@ public class Employee implements Serializable{
         this.password = password;
     }
 
-    public Employee getManager() {
-        return manager;
+    public int getManagerId() {
+        return managerId;
     }
 
-    public void setManager(Employee manager) {
-        this.manager = manager;
+    public void setManagerId(int managerId) {
+        this.managerId = managerId;
     }
 
-    public Set<Role> getRoles() {
+    public Set<String> getRoles() {
         return roles;
     }
 
-    public void setRoles(Set<Role> roles) {
+    public void setRoles(Set<String> roles) {
         this.roles = roles;
     }
 
-    public void addRole(Role role) {
-        this.roles.add(role);
+    public void addRole(EnumRole role) {
+        this.roles.add(role.toString());
     }
 
-    public Set<String> getPermissions() {
-        return permissions;
+    public boolean isAccountLocked() {
+        return isAccountLocked;
     }
 
-    public void setPermissions(Set<String> permissions) {
-        this.permissions = permissions;
+    public void setAccountLocked(boolean accountNonLocked) {
+        isAccountLocked = accountNonLocked;
     }
 
     public EmployeeDTO toEmployeeDTO() {

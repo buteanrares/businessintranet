@@ -1,4 +1,4 @@
-import { RoleModel } from "../role-models/role-model";
+import { EnumRole } from "../role-models/enum-roles";
 import { EmployeeBaseModel } from "./employee-base-model";
 
 export class EmployeeModelExtended extends EmployeeBaseModel {
@@ -7,6 +7,5 @@ export class EmployeeModelExtended extends EmployeeBaseModel {
   department: string;
   emailGroups: string[];
   manager: EmployeeBaseModel;
-  roles: RoleModel[];
-  permissions: string[];
+  roles: EnumRole[];
 }

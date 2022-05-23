@@ -5,9 +5,6 @@ import com.BusinessIntranet.BusinessIntranet.Configuration.Configuration;
 import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 import com.BusinessIntranet.BusinessIntranet.Employee.EmployeeRepository;
 import com.BusinessIntranet.BusinessIntranet.Employee.EmployeeService;
-import com.BusinessIntranet.BusinessIntranet.Enums.EnumRole;
-import com.BusinessIntranet.BusinessIntranet.Role.Role;
-import com.BusinessIntranet.BusinessIntranet.Role.RoleRepository;
 import com.BusinessIntranet.BusinessIntranet.Security.Requests.LoginRequest;
 import com.BusinessIntranet.BusinessIntranet.Security.Responses.JwtResponse;
 import com.BusinessIntranet.BusinessIntranet.Security.Responses.MessageResponse;
@@ -38,9 +35,6 @@ public class AuthenticationController {
 
     @Autowired
     EmployeeService employeeService;
-
-    @Autowired
-    RoleRepository roleRepository;
 
     @Autowired
     PasswordEncoder encoder;
@@ -80,16 +74,13 @@ public class AuthenticationController {
                 signUpRequest.getLastName(),
                 encoder.encode(Configuration.INITIAL_PASSWORD),
                 signUpRequest.getEmailGroups(),
+                signUpRequest.getRoles(),
                 signUpRequest.getPhone(),
                 signUpRequest.getJobTitle(),
                 signUpRequest.getDepartment(),
-                signUpRequest.getManager()
+                signUpRequest.getManagerId()
         );
-        Role role = new Role(EnumRole.ROLE_EMPLOYEE);
-        employee.addRole(role);
-
         employeeRepository.save(employee);
-
         return ResponseEntity.ok(new MessageResponse("User registered successfully!"));
     }
 }
