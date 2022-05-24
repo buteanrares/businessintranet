@@ -70,6 +70,6 @@ export class EmployeesComponent implements OnInit {
 
 
   hasPermissionToEditRows() {
-    return true;
+    return this.loggedInUser.roles.some(role => [EnumRole.ROLE_CEO, EnumRole.ROLE_HRMANAGER].includes(role));
   }
 }
