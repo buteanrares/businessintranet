@@ -1,27 +1,16 @@
-import {
-  Component,
-  ChangeDetectionStrategy,
-  ViewChild,
-  TemplateRef,
-} from '@angular/core';
-import {
-  startOfDay,
-  endOfDay,
-  subDays,
-  addDays,
-  endOfMonth,
-  isSameDay,
-  isSameMonth,
-  addHours,
-} from 'date-fns';
+import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, } from '@angular/core';
+import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours, } from 'date-fns';
 import { Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
-import {
-  CalendarEvent,
-  CalendarEventAction,
-  CalendarEventTimesChangedEvent,
-  CalendarView,
-} from 'angular-calendar';
+import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView, } from 'angular-calendar';
+import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
+import { EmployeeModelExtended } from 'src/app/models/employee-models/employee-model-extended';
+import { EnumRole } from 'src/app/models/role-models/enum-roles';
+import { CalendarEventService } from './service/calendar-event.service';
+import { CalendarEventBaseModel } from 'src/app/models/calendar-models/calendar-event-base-model';
+import { ToastrService } from 'ngx-toastr';
+import { HexColors } from 'src/app/models/color-models/color-hex-codes';
+import { CalendarEventColor } from 'src/app/models/calendar-models/calendar-event-color-model';
 
 @Component({
   selector: 'app-calendar',
@@ -29,99 +18,52 @@ import {
   styleUrls: ['./calendar.component.scss'],
   templateUrl: 'calendar.component.html',
 })
-export class CalendarComponent {
+export class CalendarComponent implements OnInit {
   @ViewChild('modalContent', { static: true }) modalContent: TemplateRef<any>;
-
+  loggedInUser: EmployeeModelExtended;
   view: CalendarView = CalendarView.Month;
-
   CalendarView = CalendarView;
-
   viewDate: Date = new Date();
-
-  colors: any = {
-    red: {
-      primary: '#ad2121',
-      secondary: '#FAE3E3',
-    },
-    blue: {
-      primary: '#1e90ff',
-      secondary: '#D1E8FF',
-    },
-    yellow: {
-      primary: '#e3bc08',
-      secondary: '#FDF1BA',
-    },
-  };
-
-  modalData: {
-    action: string;
-    event: CalendarEvent;
-  };
-
-  actions: CalendarEventAction[] = [
-    {
-      label: '<i class="fas fa-fw fa-pencil-alt"></i>',
-      a11yLabel: 'Edit',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.handleEvent('Edited', event);
-      },
-    },
-    {
-      label: '<i class="fas fa-fw fa-trash-alt"></i>',
-      a11yLabel: 'Delete',
-      onClick: ({ event }: { event: CalendarEvent }): void => {
-        this.events = this.events.filter((iEvent) => iEvent !== event);
-        this.handleEvent('Deleted', event);
-      },
-    },
+  availableColors = HexColors;
+  calendarEventColors: CalendarEventColor[] = [
+    { id: 1, colorName: 'Red', primaryColor: '#FF0000', secondaryColor: '#FFE5E5' },
+    { id: 2, colorName: 'Blue', primaryColor: '#0000CC', secondaryColor: '#CCE5FF' },
+    { id: 3, colorName: 'Green', primaryColor: '#009900', secondaryColor: '#E5FFCC' },
+    { id: 4, colorName: 'Purple', primaryColor: '#9933FF', secondaryColor: '#E5CCFF' }
   ];
 
   refresh = new Subject<void>();
 
-  events: CalendarEvent[] = [
-    {
-      start: subDays(startOfDay(new Date()), 1),
-      end: addDays(new Date(), 1),
-      title: 'A 3 day event',
-      color: this.colors.red,
-      actions: this.actions,
-      allDay: true,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-    {
-      start: startOfDay(new Date()),
-      title: 'An event with no end date',
-      color: this.colors.yellow,
-      actions: this.actions,
-    },
-    {
-      start: subDays(endOfMonth(new Date()), 3),
-      end: addDays(endOfMonth(new Date()), 3),
-      title: 'A long event that spans 2 months',
-      color: this.colors.blue,
-      allDay: true,
-    },
-    {
-      start: addHours(startOfDay(new Date()), 2),
-      end: addHours(new Date(), 2),
-      title: 'A draggable and resizable event',
-      color: this.colors.yellow,
-      actions: this.actions,
-      resizable: {
-        beforeStart: true,
-        afterEnd: true,
-      },
-      draggable: true,
-    },
-  ];
+  calendarEvents: CalendarEvent[] = [];
 
   activeDayIsOpen: boolean = true;
 
-  constructor(private modal: NgbModal) { }
+  constructor(private modal: NgbModal, private authenticationService: AuthenticationService, private toastr: ToastrService, private calendarEventService: CalendarEventService) { }
+
+  ngOnInit(): void {
+    this.authenticationService.getLoggedInUser().subscribe(
+      rsp => {
+        this.loggedInUser = rsp;
+      }
+    );
+    this.initData();
+    console.log(this.availableColors);
+  }
+
+  initData() {
+    if (this.isCEO()) {
+      this.calendarEventService.getAllCalendarEvents().subscribe(
+        rsp => {
+          this.mapResponseToCalendarEvents(rsp);
+        })
+    }
+    else {
+      this.calendarEventService.getAllCalendarEventsByInvitedEmployee(this.loggedInUser).subscribe(
+        rsp => {
+          this.mapResponseToCalendarEvents(rsp);
+        });
+    };
+  }
 
   dayClicked({ date, events }: { date: Date; events: CalendarEvent[] }): void {
     if (isSameMonth(date, this.viewDate)) {
@@ -137,55 +79,60 @@ export class CalendarComponent {
     }
   }
 
-  eventTimesChanged({
-    event,
-    newStart,
-    newEnd,
-  }: CalendarEventTimesChangedEvent): void {
-    this.events = this.events.map((iEvent) => {
-      if (iEvent === event) {
-        return {
-          ...event,
-          start: newStart,
-          end: newEnd,
-        };
-      }
-      return iEvent;
-    });
-    this.handleEvent('Dropped or resized', event);
+  addCalendarEvent(event: any) {
+    delete event.data.__KEY__;
+    event.data.invitedEmployeesIds = event.data.invitedEmployeesIds.split(', ');
+    event.data.calendarEventColor = this.calendarEventColors.find(calendarEventColor => calendarEventColor.id === event.data.color);
+    console.log(event);
+    this.calendarEventService.addCalendarEvent(event.data).subscribe({
+      next: () => this.toastr.success("Event added"),
+      error: err => this.toastr.error(err)
+    })
   }
 
-  handleEvent(action: string, event: CalendarEvent): void {
-    this.modalData = { event, action };
-    this.modal.open(this.modalContent, { size: 'lg' });
-  }
-
-  addEvent(): void {
-    this.events = [
-      ...this.events,
+  updateCalendarEvent(event: any) {
+    this.calendarEventService.updateCalendarEvent(event.data).subscribe(
       {
-        title: 'New event',
-        start: startOfDay(new Date()),
-        end: endOfDay(new Date()),
-        color: this.colors.red,
-        draggable: true,
-        resizable: {
-          beforeStart: true,
-          afterEnd: true,
-        },
-      },
-    ];
+        next: () => this.toastr.success("Event updated"),
+        error: err => this.toastr.error(err)
+      }
+    );
   }
 
-  deleteEvent(eventToDelete: CalendarEvent) {
-    this.events = this.events.filter((event) => event !== eventToDelete);
+  deleteCalendarEvent(event: any) {
+    console.log(event);
+    this.calendarEventService.deleteCalendarEvent(event.data.id).subscribe(
+      {
+        next: () => this.toastr.success("Event deleted"),
+        error: err => this.toastr.error(err)
+      }
+    )
   }
 
-  setView(view: CalendarView) {
-    this.view = view;
+  hasPermissionToManageRows() {
+    return this.authenticationService.roles?.includes(EnumRole.ROLE_CEO.toString()) ||
+      this.authenticationService.roles?.includes(EnumRole.ROLE_MANAGER.toString());
   }
 
-  closeOpenMonthViewDay() {
-    this.activeDayIsOpen = false;
+  isCEO() {
+    return this.authenticationService.roles?.includes(EnumRole.ROLE_CEO.toString());
+  }
+
+  mapResponseToCalendarEvents(rsp: any) {
+    let eventsArray: CalendarEvent[] = [];
+    for (let i = 0; i < rsp.length; i++) {
+      eventsArray.push({
+        id: rsp[i].id,
+        title: rsp[i].title,
+        start: new Date(rsp[i].start),
+        end: new Date(rsp[i].end!),
+        color: {
+          primary: rsp[i].primaryColor,
+          secondary: rsp[i].secondaryColor,
+        }
+      })
+    }
+    this.calendarEvents = eventsArray;
+    this.refresh.next();
   }
 }

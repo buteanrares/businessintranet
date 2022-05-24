@@ -1,8 +1,7 @@
 package com.BusinessIntranet.BusinessIntranet.DiscussionsBoard.BoardMessage;
 
-import com.BusinessIntranet.BusinessIntranet.DiscussionsBoard.BoardTopic.BoardTopic;
 import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
-import com.BusinessIntranet.BusinessIntranet.SharedModels.Message;
+import com.BusinessIntranet.BusinessIntranet.Common.SharedModels.Message;
 
 import javax.persistence.*;
 

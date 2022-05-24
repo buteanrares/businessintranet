@@ -1,4 +1,4 @@
-package com.BusinessIntranet.BusinessIntranet.SharedModels;
+package com.BusinessIntranet.BusinessIntranet.Common.SharedModels;
 
 import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 
