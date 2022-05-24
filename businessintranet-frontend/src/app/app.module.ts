@@ -23,6 +23,7 @@ import { DiscussionMessageComponent } from './components/discussions-board/discu
 import { DiscussionSidebarComponent } from './components/discussions-board/discussion-sidebar/discussion-sidebar.component';
 import { DiscussionAddMessageComponent } from './components/discussions-board/discussion-add-message/discussion-add-message.component';
 import { TokenInterceptorProvider } from './service/interceptors/token-interceptor.service';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -54,7 +55,8 @@ import { TokenInterceptorProvider } from './service/interceptors/token-intercept
       provide: DateAdapter,
       useFactory: adapterFactory,
     }),
-    FlatpickrModule.forRoot()
+    FlatpickrModule.forRoot(),
+    ToastrModule.forRoot()
   ],
   providers: [TokenInterceptorProvider],
   bootstrap: [AppComponent]

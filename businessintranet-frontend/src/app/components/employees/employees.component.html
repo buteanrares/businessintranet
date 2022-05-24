@@ -1,10 +1,52 @@
+<label class="employees-title">Employees: </label>
 <div class="employees-wrapper">
-    <dx-data-grid class="employees-data-grid" [dataSource]="employees">
-        <dxi-column dataField="id" width="200px"></dxi-column>
-        <dxi-column dataField="firstName"></dxi-column>
-        <dxi-column dataField="lastName"></dxi-column>
-        <dxi-column dataField="email"></dxi-column>
-        <dxi-column dataField="phone"></dxi-column>
-        <dxi-column dataField="jobTitle"></dxi-column>
-    </dx-data-grid>
+    <div class="employees-table">
+        <dx-data-grid
+            #employeesDataGrid
+            class="employees-data-grid"
+            [dataSource]="employees"
+            (onRowInserting)="addEmployee($event)"
+            (onRowUpdated)="updateEmployee($event)"
+            (onRowRemoving)="deleteEmployee($event)"
+        >
+            <dxi-column
+                dataField="id"
+                [allowEditing]="false"
+                width="100px"
+            ></dxi-column>
+            <dxi-column dataField="firstName"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="lastName"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="email" width="300px"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="phone"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="jobTitle"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="department"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxi-column dataField="managerId"></dxi-column>
+            <dxi-column dataField="roles"
+                ><dxi-validation-rule type="required"></dxi-validation-rule
+            ></dxi-column>
+            <dxo-editing
+                *ngIf="hasPermissionToEditRows()"
+                mode="popup"
+                [allowAdding]="true"
+                [allowUpdating]="true"
+                [allowDeleting]="true"
+                [useIcons]="true"
+            >
+                <dxo-popup title="Employee info" [showTitle]="true" width="700">
+                </dxo-popup
+            ></dxo-editing>
+        </dx-data-grid>
+    </div>
 </div>

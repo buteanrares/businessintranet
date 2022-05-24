@@ -18,13 +18,14 @@ public class UserDetailsImpl implements UserDetails {
     private Long id;
 
     private String email;
-
     @JsonIgnore
     private String password;
 
+    private boolean isAccountLocked;
+
     private Collection<? extends GrantedAuthority> authorities;
 
-    public UserDetailsImpl(Long id, String email, String password,
+    public UserDetailsImpl(Long id, String email, String password, boolean isAccountLocked,
                            Collection<? extends GrantedAuthority> authorities) {
         this.id = id;
         this.email = email;
@@ -34,13 +35,14 @@ public class UserDetailsImpl implements UserDetails {
 
     public static UserDetailsImpl build(Employee user) {
         List<GrantedAuthority> authorities = user.getRoles().stream()
-                .map(role -> new SimpleGrantedAuthority(role.getName().name()))
+                .map(SimpleGrantedAuthority::new)
                 .collect(Collectors.toList());
 
         return new UserDetailsImpl(
                 user.getId(),
                 user.getEmail(),
                 user.getPassword(),
+                user.isAccountLocked(),
                 authorities);
     }
 
@@ -70,7 +72,7 @@ public class UserDetailsImpl implements UserDetails {
 
     @Override
     public boolean isAccountNonLocked() {
-        return true;
+        return !isAccountLocked;
     }
 
     @Override
