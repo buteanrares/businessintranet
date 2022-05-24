@@ -24,3 +24,22 @@ pre {
     color: #2d9587;
     cursor: pointer;
 }
+
+.calendar-events-datagrid-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
+
+.calendar-events-control-title {
+    display: flex;
+    justify-content: center;
+}
+
+.calendar-events-datagrid {
+    width: 60%;
+}
+
+.calendar-events-control-wrapper {
+    margin: 100px 0 200px 0;
+}

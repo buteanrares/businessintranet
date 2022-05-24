@@ -11,7 +11,6 @@
                 mwlCalendarPreviousView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="closeOpenMonthViewDay()"
             >
                 Previous
             </div>
@@ -27,7 +26,6 @@
                 mwlCalendarNextView
                 [view]="view"
                 [(viewDate)]="viewDate"
-                (viewDateChange)="closeOpenMonthViewDay()"
             >
                 Next
             </div>
@@ -39,30 +37,62 @@
     <mwl-calendar-month-view
         *ngSwitchCase="CalendarView.Month"
         [viewDate]="viewDate"
-        [events]="events"
+        [events]="calendarEvents"
         [refresh]="refresh"
         [activeDayIsOpen]="activeDayIsOpen"
         (dayClicked)="dayClicked($event.day)"
-        (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)"
     >
     </mwl-calendar-month-view>
-    <mwl-calendar-week-view
-        *ngSwitchCase="CalendarView.Week"
-        [viewDate]="viewDate"
-        [events]="events"
-        [refresh]="refresh"
-        (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)"
-    >
-    </mwl-calendar-week-view>
-    <mwl-calendar-day-view
-        *ngSwitchCase="CalendarView.Day"
-        [viewDate]="viewDate"
-        [events]="events"
-        [refresh]="refresh"
-        (eventClicked)="handleEvent('Clicked', $event.event)"
-        (eventTimesChanged)="eventTimesChanged($event)"
-    >
-    </mwl-calendar-day-view>
+</div>
+<div
+    class="calendar-events-control-wrapper"
+    *ngIf="hasPermissionToManageRows()"
+>
+    <h3 class="calendar-events-control-title">Manage calendar events:</h3>
+    <div class="calendar-events-datagrid-wrapper">
+        <dx-data-grid
+            class="calendar-events-datagrid"
+            [dataSource]="calendarEvents"
+            [showBorders]="false"
+            (onRowInserting)="addCalendarEvent($event)"
+            (onRowUpdated)="updateCalendarEvent($event)"
+            (onRowRemoving)="deleteCalendarEvent($event)"
+        >
+            <dxi-column
+                dataField="id"
+                width="75px"
+                [allowEditing]="false"
+            ></dxi-column>
+            <dxi-column dataField="title" width="350px"></dxi-column>
+            <dxi-column
+                dataField="start"
+                dataType="date"
+                width="150px"
+            ></dxi-column>
+            <dxi-column
+                dataField="end"
+                dataType="date"
+                width="150px"
+            ></dxi-column>
+            <dxi-column dataField="color">
+                <dxo-lookup
+                    [dataSource]="availableColors"
+                    displayExpr="Color"
+                    valueExpr="ID"
+                ></dxo-lookup
+            ></dxi-column>
+            <dxi-column
+                dataField="invitedEmployeesIds"
+                width="150px"
+            ></dxi-column>
+            <dxo-editing
+                mode="batch"
+                [allowUpdating]="true"
+                [allowAdding]="true"
+                [allowDeleting]="true"
+                [selectTextOnEditStart]="false"
+            >
+            </dxo-editing>
+        </dx-data-grid>
+    </div>
 </div>

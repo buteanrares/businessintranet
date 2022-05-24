@@ -25,6 +25,6 @@ export class EmployeesService {
   }
 
   deleteEmployee(id: number): Observable<any> {
-    return this.http.delete<any>(`http://localhost:8080/api/employee/update/${id}`);
+    return this.http.delete<any>(`http://localhost:8080/api/employee/delete/${id}`);
   }
 }

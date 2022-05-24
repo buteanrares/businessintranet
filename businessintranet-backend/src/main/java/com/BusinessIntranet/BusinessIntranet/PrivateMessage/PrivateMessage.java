@@ -1,7 +1,7 @@
 package com.BusinessIntranet.BusinessIntranet.PrivateMessage;
 
 import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
-import com.BusinessIntranet.BusinessIntranet.SharedModels.Message;
+import com.BusinessIntranet.BusinessIntranet.Common.SharedModels.Message;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
