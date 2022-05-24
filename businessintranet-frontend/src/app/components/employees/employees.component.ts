@@ -2,7 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { DxDataGridComponent } from 'devextreme-angular';
 import { EmployeeBaseModel } from 'src/app/models/employee-models/employee-base-model';
 import { EmployeeModelExtended } from 'src/app/models/employee-models/employee-model-extended';
-import { EnumRole } from 'src/app/models/role-models/enum-roles';
+import { EnumRole } from '../../models/role-models/enum-roles';
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
 import { EmployeesService } from './service/employees.service';
 import { ToastrService } from 'ngx-toastr';
