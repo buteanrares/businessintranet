@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ViewChild, TemplateRef, OnInit, } from '@angular/core';
 import { startOfDay, endOfDay, subDays, addDays, endOfMonth, isSameDay, isSameMonth, addHours, } from 'date-fns';
-import { Subject } from 'rxjs';
+import { lastValueFrom, Subject } from 'rxjs';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { CalendarEvent, CalendarEventAction, CalendarEventTimesChangedEvent, CalendarView, } from 'angular-calendar';
 import { AuthenticationService } from 'src/app/service/authentication/authentication.service';
@@ -34,18 +34,16 @@ export class CalendarComponent implements OnInit {
 
   refresh = new Subject<void>();
 
-  calendarEvents: CalendarEvent[] = [];
+  calendarEvents: CalendarEventBaseModel[] = [];
 
   activeDayIsOpen: boolean = true;
 
   constructor(private modal: NgbModal, private authenticationService: AuthenticationService, private toastr: ToastrService, private calendarEventService: CalendarEventService) { }
 
-  ngOnInit(): void {
-    this.authenticationService.getLoggedInUser().subscribe(
-      rsp => {
-        this.loggedInUser = rsp;
-      }
-    );
+  async ngOnInit(): Promise<void> {
+    const data$ = this.authenticationService.getLoggedInUser();
+    this.loggedInUser = await lastValueFrom(data$);
+    console.log(this.loggedInUser);
     this.initData();
     console.log(this.availableColors);
   }
@@ -58,7 +56,7 @@ export class CalendarComponent implements OnInit {
         })
     }
     else {
-      this.calendarEventService.getAllCalendarEventsByInvitedEmployee(this.loggedInUser).subscribe(
+      this.calendarEventService.getAllCalendarEventsInvitedEmployeeById(this.loggedInUser.id).subscribe(
         rsp => {
           this.mapResponseToCalendarEvents(rsp);
         });
@@ -80,10 +78,11 @@ export class CalendarComponent implements OnInit {
   }
 
   addCalendarEvent(event: any) {
+    //TODO: data doesnt bind correctly. Check properties names. .html file [datasource] colors doesnt map correctly
+
     delete event.data.__KEY__;
-    event.data.invitedEmployeesIds = event.data.invitedEmployeesIds.split(', ');
-    event.data.calendarEventColor = this.calendarEventColors.find(calendarEventColor => calendarEventColor.id === event.data.color);
-    console.log(event);
+    event.data.invitedEmployeesIds; // as string, wont get all users by id, ex "1, 2, 5";
+    event.data.calendarEventColor = this.calendarEventColors.find(calendarEventColor => calendarEventColor.id === event.data.calendarEventColorId);
     this.calendarEventService.addCalendarEvent(event.data).subscribe({
       next: () => this.toastr.success("Event added"),
       error: err => this.toastr.error(err)
@@ -91,6 +90,8 @@ export class CalendarComponent implements OnInit {
   }
 
   updateCalendarEvent(event: any) {
+    // delete unnecessary attributes
+    this.prepareModelForBackend(event);
     this.calendarEventService.updateCalendarEvent(event.data).subscribe(
       {
         next: () => this.toastr.success("Event updated"),
@@ -119,20 +120,31 @@ export class CalendarComponent implements OnInit {
   }
 
   mapResponseToCalendarEvents(rsp: any) {
-    let eventsArray: CalendarEvent[] = [];
+    let eventsArray: CalendarEventBaseModel[] = [];
     for (let i = 0; i < rsp.length; i++) {
       eventsArray.push({
         id: rsp[i].id,
         title: rsp[i].title,
         start: new Date(rsp[i].start),
         end: new Date(rsp[i].end!),
+        calendarEventColorName: rsp[i].calendarEventColor.colorName,
+        calendarEventColorId: rsp[i].calendarEventColor.id,
         color: {
-          primary: rsp[i].primaryColor,
-          secondary: rsp[i].secondaryColor,
-        }
+          primary: rsp[i].calendarEventColor.primaryColor,
+          secondary: rsp[i].calendarEventColor.secondaryColor,
+        },
+        invitedEmployees: rsp[i].invitedEmployees,
+        invitedEmployeesIds: rsp[i].invitedEmployeesIds
       })
     }
     this.calendarEvents = eventsArray;
     this.refresh.next();
+  }
+
+  prepareModelForBackend(event: any) {
+    delete event.data.color;
+    delete event.data.calendarEventColorName;
+    delete event.data.invitedEmployees;
+    event.data.calendarEventColor = this.calendarEventColors.find(calendarEventColor => calendarEventColor.id === event.data.calendarEventColorId);
   }
 }

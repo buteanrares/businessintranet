@@ -16,13 +16,13 @@ pre {
 }
 
 .date-control-button {
-    margin-left: 10px;
-    margin-right: 10px;
+    width: 33%;
     display: inline-block;
     font-size: large;
     font-weight: bolder;
     color: #2d9587;
     cursor: pointer;
+    text-align: center;
 }
 
 .calendar-events-datagrid-wrapper {

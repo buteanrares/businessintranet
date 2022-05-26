@@ -21,14 +21,14 @@ export class CalendarEventService {
   }
 
   updateCalendarEvent(calendarEvent: CalendarEventBaseModel): Observable<CalendarEventBaseModel> {
-    return this.http.post<CalendarEventBaseModel>('http://localhost:8080/api/calendarevent/update', calendarEvent);
+    return this.http.put<CalendarEventBaseModel>('http://localhost:8080/api/calendarevent/update', calendarEvent);
   }
 
   deleteCalendarEvent(id: number) {
     return this.http.delete(`http://localhost:8080/api/calendarevent/delete/${id}`);
   }
 
-  getAllCalendarEventsByInvitedEmployee(invitedEmployee: EmployeeModelExtended): Observable<CalendarEventBaseModel[]> {
-    return this.http.post<CalendarEventBaseModel[]>('http://localhost:8080/api/calendarevent/findall/byinvitedemployee', invitedEmployee);
+  getAllCalendarEventsInvitedEmployeeById(invitedEmployeeId: number): Observable<CalendarEventBaseModel[]> {
+    return this.http.get<CalendarEventBaseModel[]>(`http://localhost:8080/api/calendarevent/findall/${invitedEmployeeId}`);
   }
 }
