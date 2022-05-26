@@ -3,6 +3,8 @@ package com.BusinessIntranet.BusinessIntranet.CalendarEvent;
 import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +20,8 @@ public class CalendarEvent {
     @OneToOne
     private CalendarEventColor calendarEventColor;
     @ManyToMany
-    private List<Employee> invitedEmployees;
+    private List<Employee> invitedEmployees = new ArrayList<>();
+    private String invitedEmployeesIds; // received value from frontend, received raw instead of mapping in front; ex "1, 2, 5"
 
     public CalendarEvent() {
     }
@@ -73,5 +76,13 @@ public class CalendarEvent {
 
     public void setInvitedEmployees(List<Employee> invitedEmployees) {
         this.invitedEmployees = invitedEmployees;
+    }
+
+    public void addInvitedEmployee(Employee invitedEmployee){
+        this.invitedEmployees.add(invitedEmployee);
+    }
+
+    public String getInvitedEmployeesIds() {
+        return invitedEmployeesIds;
     }
 }

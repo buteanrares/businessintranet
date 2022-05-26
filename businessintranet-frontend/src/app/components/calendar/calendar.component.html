@@ -5,30 +5,28 @@
         </h3>
     </div>
     <div class="date-control-button-container">
-        <div class="btn-group">
-            <div
-                class="date-control-button"
-                mwlCalendarPreviousView
-                [view]="view"
-                [(viewDate)]="viewDate"
-            >
-                Previous
-            </div>
-            <div
-                class="date-control-button"
-                mwlCalendarToday
-                [(viewDate)]="viewDate"
-            >
-                Today
-            </div>
-            <div
-                class="date-control-button"
-                mwlCalendarNextView
-                [view]="view"
-                [(viewDate)]="viewDate"
-            >
-                Next
-            </div>
+        <div
+            class="date-control-button"
+            mwlCalendarPreviousView
+            [view]="view"
+            [(viewDate)]="viewDate"
+        >
+            <label>Previous</label>
+        </div>
+        <div
+            class="date-control-button"
+            mwlCalendarToday
+            [(viewDate)]="viewDate"
+        >
+            <label>Today</label>
+        </div>
+        <div
+            class="date-control-button"
+            mwlCalendarNextView
+            [view]="view"
+            [(viewDate)]="viewDate"
+        >
+            <label>Next</label>
         </div>
     </div>
 </div>
@@ -60,21 +58,25 @@
         >
             <dxi-column
                 dataField="id"
-                width="75px"
+                width="100px"
                 [allowEditing]="false"
             ></dxi-column>
             <dxi-column dataField="title" width="350px"></dxi-column>
             <dxi-column
                 dataField="start"
                 dataType="date"
-                width="150px"
+                width="175px"
             ></dxi-column>
             <dxi-column
                 dataField="end"
                 dataType="date"
-                width="150px"
+                width="175px"
             ></dxi-column>
-            <dxi-column dataField="color">
+            <dxi-column
+                dataField="calendarEventColorId"
+                caption="Color"
+                width="175px"
+            >
                 <dxo-lookup
                     [dataSource]="availableColors"
                     displayExpr="Color"
@@ -83,7 +85,7 @@
             ></dxi-column>
             <dxi-column
                 dataField="invitedEmployeesIds"
-                width="150px"
+                width="175px"
             ></dxi-column>
             <dxo-editing
                 mode="batch"

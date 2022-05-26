@@ -1,6 +1,5 @@
 package com.BusinessIntranet.BusinessIntranet.CalendarEvent;
 
-import com.BusinessIntranet.BusinessIntranet.Employee.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -31,9 +30,9 @@ public class CalendarEventController {
         return new ResponseEntity<>(calendarEvent,HttpStatus.OK);
     }
 
-    @PostMapping("/findall/byinvitedemployee")
-    public ResponseEntity<List<CalendarEvent>> getCalendarEventByInvitedEmployeeId(@RequestBody Employee invitedEmployee){
-        List<CalendarEvent> calendarEvents = calendarEventService.findAllByInvitedEmployee(invitedEmployee);
+    @GetMapping("/findall/{invitedEmployeeId}")
+    public ResponseEntity<List<CalendarEvent>> getCalendarEventByInvitedEmployeeId(@PathVariable("invitedEmployeeId") Long invitedEmployeeId){
+        List<CalendarEvent> calendarEvents = calendarEventService.findAllByInvitedEmployeeId(invitedEmployeeId);
         return new ResponseEntity<>(calendarEvents,HttpStatus.OK);
     }
 
