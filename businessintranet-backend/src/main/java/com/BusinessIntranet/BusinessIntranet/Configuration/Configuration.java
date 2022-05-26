@@ -4,5 +4,5 @@ public class Configuration {
     public static final String EMAIL_DOMAIN = "@businessdomain.com";
     public static final String INITIAL_PASSWORD = "password";
     public static final String INITIAL_IMAGE_URL = "./resources/initial_image";
-    public static final String applicationVersion="0.2.0";
+    public static final String applicationVersion="0.3.0";
 }
