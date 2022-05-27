@@ -4,10 +4,10 @@
     display: flex;
 }
 
-pre {
-    background-color: #f5f5f5;
-    padding: 15px;
-}
+// pre {
+//     background-color: #f5f5f5;
+//     padding: 15px;
+// }
 
 .date-control-button-container {
     margin: auto;
@@ -23,6 +23,9 @@ pre {
     color: #2d9587;
     cursor: pointer;
     text-align: center;
+    label {
+        cursor: pointer;
+    }
 }
 
 .calendar-events-datagrid-wrapper {
@@ -37,7 +40,7 @@ pre {
 }
 
 .calendar-events-datagrid {
-    width: 60%;
+    width: 70%;
 }
 
 .calendar-events-control-wrapper {

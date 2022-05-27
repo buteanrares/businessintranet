@@ -5,7 +5,7 @@ import com.BusinessIntranet.BusinessIntranet.DiscussionsBoard.BoardMessage.Board
 import javax.persistence.*;
 import java.util.List;
 
-@Entity(name = "BoardTopic")
+@Entity
 public class BoardTopic {
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)

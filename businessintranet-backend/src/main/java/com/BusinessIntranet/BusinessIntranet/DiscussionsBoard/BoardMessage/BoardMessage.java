@@ -5,7 +5,7 @@ import com.BusinessIntranet.BusinessIntranet.Common.SharedModels.Message;
 
 import javax.persistence.*;
 
-@Entity(name="BoardMessages")
+@Entity
 public class BoardMessage extends Message {
 
     public BoardMessage() {

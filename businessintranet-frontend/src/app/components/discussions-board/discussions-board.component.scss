@@ -1,0 +1,78 @@
+.discussion-sidebar-wrapper {
+    float: left;
+    padding-right: 100px;
+    min-height: 80vh;
+    margin-left: 20px;
+    h4 {
+        margin-top: 0;
+    }
+}
+
+.topic-items {
+    padding: 5px;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.topic-children {
+    padding: 4px 0 0 3px;
+    margin-left: 10px;
+    display: block;
+}
+
+.main-content-wrapper {
+    display: block;
+    justify-content: center;
+    width: 61%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.post-message-button {
+    float: right;
+    margin: 7px 15px 0 0;
+}
+
+.message-wrapper {
+    display: block;
+    width: 60%;
+    margin-bottom: 30px;
+    padding: 10px 10px 10px 10px;
+    border: 2px solid #2d9587;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.sender-datetime-information {
+    font-style: italic;
+    padding-bottom: 15px;
+    display: block;
+}
+
+.messages-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.manage-topics-title {
+    display: flex;
+    justify-content: center;
+    margin: 100px 0 25px 0;
+}
+
+.manage-topics-wrapper {
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+
+.topics-datagrid-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 25px;
+}
