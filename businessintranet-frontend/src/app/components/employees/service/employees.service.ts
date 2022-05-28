@@ -16,6 +16,10 @@ export class EmployeesService {
     return this.http.get<EmployeeBaseModel[]>('http://localhost:8080/api/employee/all');
   }
 
+  getEmployeeById(id: number) {
+    return this.http.get<EmployeeBaseModel>(`http://localhost:8080/api/employee/find/${id}`);
+  }
+
   addEmployee(employee: EmployeeModelExtended) {
     return this.http.post<EmployeeModelExtended>('http://localhost:8080/api/employee/add', employee);
   }
