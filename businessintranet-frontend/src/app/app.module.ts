@@ -19,9 +19,6 @@ import { CalendarModule, DateAdapter } from 'angular-calendar';
 import { adapterFactory } from 'angular-calendar/date-adapters/date-fns';
 import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { DiscussionMessageComponent } from './components/discussions-board/discussion-message/discussion-message.component';
-import { DiscussionSidebarComponent } from './components/discussions-board/discussion-sidebar/discussion-sidebar.component';
-import { DiscussionAddMessageComponent } from './components/discussions-board/discussion-add-message/discussion-add-message.component';
 import { TokenInterceptorProvider } from './service/interceptors/token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
 
@@ -37,9 +34,6 @@ import { ToastrModule } from 'ngx-toastr';
     CalendarComponent,
     MeetingsComponent,
     DiscussionsBoardComponent,
-    DiscussionSidebarComponent,
-    DiscussionMessageComponent,
-    DiscussionAddMessageComponent
   ],
   imports: [
     BrowserModule,

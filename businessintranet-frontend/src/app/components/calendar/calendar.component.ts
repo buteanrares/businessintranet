@@ -78,14 +78,12 @@ export class CalendarComponent implements OnInit {
   }
 
   addCalendarEvent(event: any) {
-    //TODO: data doesnt bind correctly. Check properties names. .html file [datasource] colors doesnt map correctly
-
     delete event.data.__KEY__;
     event.data.invitedEmployeesIds; // as string, wont get all users by id, ex "1, 2, 5";
     event.data.calendarEventColor = this.calendarEventColors.find(calendarEventColor => calendarEventColor.id === event.data.calendarEventColorId);
     this.calendarEventService.addCalendarEvent(event.data).subscribe({
       next: () => this.toastr.success("Event added"),
-      error: err => this.toastr.error(err)
+      error: err => this.toastr.error(err.message)
     })
   }
 
@@ -95,17 +93,16 @@ export class CalendarComponent implements OnInit {
     this.calendarEventService.updateCalendarEvent(event.data).subscribe(
       {
         next: () => this.toastr.success("Event updated"),
-        error: err => this.toastr.error(err)
+        error: err => this.toastr.error(err.message)
       }
     );
   }
 
   deleteCalendarEvent(event: any) {
-    console.log(event);
     this.calendarEventService.deleteCalendarEvent(event.data.id).subscribe(
       {
         next: () => this.toastr.success("Event deleted"),
-        error: err => this.toastr.error(err)
+        error: err => this.toastr.error(err.message)
       }
     )
   }

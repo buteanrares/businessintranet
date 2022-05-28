@@ -36,7 +36,7 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.addEmployee(event.data).subscribe(
       {
         next: () => this.toastr.success("Employee added"),
-        error: err => this.toastr.error(err)
+        error: err => this.toastr.error(err.message)
       }
     )
   }
@@ -45,7 +45,7 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.updateEmployee(event.data).subscribe(
       {
         next: () => this.toastr.success("Employee updated"),
-        error: err => this.toastr.error(err)
+        error: err => this.toastr.error(err.message)
       }
     );
   }
@@ -58,7 +58,7 @@ export class EmployeesComponent implements OnInit {
     this.employeeService.deleteEmployee(event.data.id).subscribe(
       {
         next: () => this.toastr.success("Employee deleted"),
-        error: err => this.toastr.error(err)
+        error: err => this.toastr.error(err.message)
       }
     )
   }

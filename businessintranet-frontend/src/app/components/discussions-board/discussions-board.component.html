@@ -1,9 +1,74 @@
-<app-discussion-sidebar></app-discussion-sidebar>
-<div class="messages-wrapper">
-    <label *ngFor="let message of messages">
-        <app-discussion-message [message]="message"></app-discussion-message>
-    </label>
+<div class="discussion-sidebar-wrapper">
+    <h4 class="topics-header">Topics:</h4>
+    <ul class="topicsbar">
+        <li class="topic-items" *ngFor="let topic of topics">
+            <div class="topic-link" (click)="onSelectedTopicChange(topic.id)">
+                {{ topic.title }}
+            </div>
+        </li>
+    </ul>
 </div>
-<div class="add-message-wrapper">
-    <app-discussion-add-message></app-discussion-add-message>
+
+<div class="main-content-wrapper">
+    <h4 class="selected-topic">Selected topic: {{ selectedTopic?.title }}</h4>
+    <label *ngFor="let message of messages">
+        <div class="message-informaton">
+            <label class="sender-datetime-information">{{
+                this.message.sender.firstName +
+                    " " +
+                    this.message.sender.lastName +
+                    ", at " +
+                    (this.message.timeSent | date: "short")
+            }}</label>
+        </div>
+        <div class="message-content">
+            {{ this.message.content }}
+        </div>
+    </label>
+    <dx-text-area
+        class="post-message-textarea"
+        [height]="100"
+        [(value)]="messageContent"
+        [label]="postMessagePlaceholder"
+        labelMode="link"
+        [maxLength]="1000"
+    ></dx-text-area>
+    <dx-button
+        class="post-message-button"
+        text="Post"
+        [width]="75"
+        [height]="30"
+        (onClick)="postBoardMessage()"
+    >
+    </dx-button>
+    <div class="manage-topics-wrapper" *ngIf="hasPermissionToManage()">
+        <div class="manage-topics-title">
+            <h3>Manage topics</h3>
+        </div>
+        <div class="topics-datagrid-wrapper">
+            <dx-data-grid
+                class="topics-datagrid"
+                width="500px"
+                [dataSource]="topics"
+                [showBorders]="false"
+                (onRowInserting)="addBoardTopic($event)"
+                (onRowUpdated)="updateBoardTopic($event)"
+                (onRowRemoving)="deleteBoardTopic($event)"
+            >
+                <dxi-column
+                    dataField="id"
+                    width="100px"
+                    [allowEditing]="false"
+                ></dxi-column>
+                <dxi-column dataField="title"></dxi-column>
+                <dxo-editing
+                    mode="batch"
+                    [allowUpdating]="true"
+                    [allowAdding]="true"
+                    [allowDeleting]="true"
+                    [selectTextOnEditStart]="false"
+                ></dxo-editing>
+            </dx-data-grid>
+        </div>
+    </div>
 </div>
