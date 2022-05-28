@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping(path = "api/boardmessage")
 public class BoardMessageController {
     private BoardMessageService boardMessageService;
@@ -20,6 +21,12 @@ public class BoardMessageController {
     @GetMapping("/all")
     public ResponseEntity<List<BoardMessage>> getBoardMessages(){
         List<BoardMessage> boardMessages = boardMessageService.findAllBoardMessages();
+        return new ResponseEntity<>(boardMessages, HttpStatus.OK);
+    }
+
+    @GetMapping("/all/{boardTopicId}")
+    public ResponseEntity<List<BoardMessage>> getBoardMessagesByTopicId(@PathVariable("boardTopicId") Long boardTopicId){
+        List<BoardMessage> boardMessages = boardMessageService.findAllByReferencedBoardTopicId(boardTopicId);
         return new ResponseEntity<>(boardMessages, HttpStatus.OK);
     }
 

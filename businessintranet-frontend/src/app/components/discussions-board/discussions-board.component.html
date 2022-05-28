@@ -1,33 +1,32 @@
 <div class="discussion-sidebar-wrapper">
     <h4 class="topics-header">Topics:</h4>
-    <ul class="topicsbar" routerLinkActive="active">
+    <ul class="topicsbar">
         <li class="topic-items" *ngFor="let topic of topics">
-            <div class="topic-link">{{ topic.title }}</div>
-            <div
-                class="topic-children"
-                *ngFor="let childTopic of topic.children"
-                (onClick)="setSelectedTopic($event)"
-            >
-                {{ childTopic.title }}
+            <div class="topic-link" (click)="onSelectedTopicChange(topic.id)">
+                {{ topic.title }}
             </div>
         </li>
     </ul>
 </div>
 
 <div class="main-content-wrapper">
+    <h4 class="selected-topic">Selected topic: {{ selectedTopic?.title }}</h4>
     <label *ngFor="let message of messages">
         <div class="message-informaton">
             <label class="sender-datetime-information">{{
-                this.message.sender.email +
-                    ", " +
+                this.message.sender.firstName +
+                    " " +
+                    this.message.sender.lastName +
+                    ", at " +
                     (this.message.timeSent | date: "short")
             }}</label>
         </div>
-        <label>
+        <div class="message-content">
             {{ this.message.content }}
-        </label>
+        </div>
     </label>
     <dx-text-area
+        class="post-message-textarea"
         [height]="100"
         [(value)]="messageContent"
         [label]="postMessagePlaceholder"
@@ -39,39 +38,37 @@
         text="Post"
         [width]="75"
         [height]="30"
+        (onClick)="postBoardMessage()"
     >
     </dx-button>
-    <div class="manage-topics-title">
-        <h3>Manage topics</h3>
-    </div>
-    <div class="topics-datagrid-wrapper">
-        <dx-data-grid
-            class="topics-datagrid"
-            width="750px"
-            [dataSource]="topics"
-            [showBorders]="false"
-            (onRowInserting)="addDiscussionTopic($event)"
-            (onRowUpdated)="updateDiscussionTopic($event)"
-            (onRowRemoving)="deleteDiscussionTopic($event)"
-        >
-            <dxi-column
-                dataField="id"
-                width="100px"
-                [allowEditing]="false"
-            ></dxi-column>
-            <dxi-column dataField="title" width="400px"></dxi-column>
-            <dxi-column
-                dataField="parentID"
-                width="100px"
-                caption="Parent Id"
-            ></dxi-column>
-            <dxo-editing
-                mode="batch"
-                [allowUpdating]="true"
-                [allowAdding]="true"
-                [allowDeleting]="true"
-                [selectTextOnEditStart]="false"
-            ></dxo-editing>
-        </dx-data-grid>
+    <div class="manage-topics-wrapper" *ngIf="hasPermissionToManage()">
+        <div class="manage-topics-title">
+            <h3>Manage topics</h3>
+        </div>
+        <div class="topics-datagrid-wrapper">
+            <dx-data-grid
+                class="topics-datagrid"
+                width="500px"
+                [dataSource]="topics"
+                [showBorders]="false"
+                (onRowInserting)="addBoardTopic($event)"
+                (onRowUpdated)="updateBoardTopic($event)"
+                (onRowRemoving)="deleteBoardTopic($event)"
+            >
+                <dxi-column
+                    dataField="id"
+                    width="100px"
+                    [allowEditing]="false"
+                ></dxi-column>
+                <dxi-column dataField="title"></dxi-column>
+                <dxo-editing
+                    mode="batch"
+                    [allowUpdating]="true"
+                    [allowAdding]="true"
+                    [allowDeleting]="true"
+                    [selectTextOnEditStart]="false"
+                ></dxo-editing>
+            </dx-data-grid>
+        </div>
     </div>
 </div>

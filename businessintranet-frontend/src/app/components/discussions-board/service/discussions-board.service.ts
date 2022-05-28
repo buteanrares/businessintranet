@@ -1,7 +1,9 @@
 import { HttpClient } from '@angular/common/http';
+import { Message } from '@angular/compiler/src/i18n/i18n_ast';
 import { Injectable } from '@angular/core';
 import { Observable, Subject } from 'rxjs';
-import { TopicBaseModel } from 'src/app/models/discussion-board-models/topic-base-model';
+import { MessageBaseModel } from 'src/app/models/discussion-board-models/message-base-model';
+import { BoardTopicBaseModel } from 'src/app/models/discussion-board-models/topic-base-model';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class DiscussionsBoardService {
 
   constructor(private http: HttpClient) { }
 
-  public setSelectedTopic(selectedTopic: TopicBaseModel) {
+  public setSelectedTopic(selectedTopic: BoardTopicBaseModel) {
     this.selectedTopic$.next(selectedTopic);
   }
 
@@ -19,19 +21,31 @@ export class DiscussionsBoardService {
     return this.selectedTopic$.asObservable();
   }
 
-  public getAllBoardTopics(): Observable<TopicBaseModel[]> {
-    return this.http.get<TopicBaseModel[]>('http://localhost:8080/api/boardtopic/all');
+  public getAllBoardTopics(): Observable<BoardTopicBaseModel[]> {
+    return this.http.get<BoardTopicBaseModel[]>('http://localhost:8080/api/boardtopic/all');
   }
 
-  public addBoardTopic(boardTopic: TopicBaseModel) {
-    return this.http.post<TopicBaseModel>('http://localhost:8080/api/boardtopic/all', boardTopic);
+  public getBoardTopicById(boardTopicId: number): Observable<BoardTopicBaseModel> {
+    return this.http.get<BoardTopicBaseModel>(`http://localhost:8080/api/boardtopic/find/${boardTopicId}`);
   }
 
-  public updateBoardTopic(boardTopic: TopicBaseModel) {
-    return this.http.put<TopicBaseModel>('http://localhost:8080/api/boardtopic/update', boardTopic);
+  public addBoardTopic(boardTopic: BoardTopicBaseModel): Observable<BoardTopicBaseModel> {
+    return this.http.post<BoardTopicBaseModel>('http://localhost:8080/api/boardtopic/add', boardTopic);
+  }
+
+  public updateBoardTopic(boardTopic: BoardTopicBaseModel) {
+    return this.http.put<BoardTopicBaseModel>('http://localhost:8080/api/boardtopic/update', boardTopic);
   }
 
   public deleteBoardTopic(id: number) {
-    return this.http.delete(`http://localhost:8080/api/boardtopic/update/${id}`);
+    return this.http.delete(`http://localhost:8080/api/boardtopic/delete/${id}`);
+  }
+
+  public getAllBoardMessagesByTopicId(boardTopicId: number): Observable<MessageBaseModel[]> {
+    return this.http.get<MessageBaseModel[]>(`http://localhost:8080/api/boardmessage/all/${boardTopicId}`);
+  }
+
+  public addBoardMessage(boardMessage: MessageBaseModel): Observable<MessageBaseModel> {
+    return this.http.post<MessageBaseModel>('http://localhost:8080/api/boardmessage/add', boardMessage);
   }
 }

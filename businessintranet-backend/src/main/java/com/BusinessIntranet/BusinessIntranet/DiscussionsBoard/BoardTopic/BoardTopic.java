@@ -12,8 +12,26 @@ public class BoardTopic {
     @Column(nullable = false,updatable = false)
     private Long id;
     private String title;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.REMOVE, orphanRemoval = true)
     private List<BoardMessage> boardMessages;
-    @OneToMany
-    private List<BoardTopic> childBoardTopics;
+
+    public Long getId() {
+        return id;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public List<BoardMessage> getBoardMessages() {
+        return boardMessages;
+    }
+
+    public void setBoardMessages(List<BoardMessage> boardMessages) {
+        this.boardMessages = boardMessages;
+    }
 }

@@ -1,35 +1,36 @@
 .discussion-sidebar-wrapper {
     float: left;
-    padding-right: 100px;
+    margin-right: 100px;
     min-height: 80vh;
-    margin-left: 20px;
+    margin-left: 40px;
     h4 {
         margin-top: 0;
     }
 }
 
-.topic-items {
-    padding: 5px;
-    font-size: 15px;
-    font-weight: bold;
+.topicsbar {
+    margin-left: 5px;
+    list-style-type: none;
 }
 
-.topic-children {
-    padding: 4px 0 0 3px;
-    margin-left: 10px;
-    display: block;
+.topic-items {
+    padding: 5px 5px 5px 0;
+    font-size: 15px;
+    font-weight: bold;
+    color: #2d9587;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 .main-content-wrapper {
     display: block;
     justify-content: center;
-    width: 61%;
-    margin-left: auto;
+    width: 70%;
+    margin-left: 350px;
     margin-right: auto;
     text-align: center;
     margin-bottom: 30px;
     padding: 10px 10px 10px 0;
-    border-radius: 10px;
     overflow: hidden;
 }
 
@@ -50,7 +51,7 @@
 
 .sender-datetime-information {
     font-style: italic;
-    padding-bottom: 15px;
+    padding-bottom: 5px;
     display: block;
 }
 
@@ -75,4 +76,26 @@
     display: flex;
     justify-content: center;
     margin-top: 25px;
+}
+
+.selected-topic {
+    text-align: left;
+    margin-bottom: 50px;
+}
+
+.message-informaton {
+    text-align: left;
+    margin-left: 15px;
+}
+
+.message-content {
+    text-align: left;
+    margin: 0 0 30px;
+    padding: 10px 10px 10px 10px;
+    border-radius: 10px;
+    border: #2d9587 2px solid;
+}
+
+.post-message-textarea {
+    margin-top: 75px;
 }

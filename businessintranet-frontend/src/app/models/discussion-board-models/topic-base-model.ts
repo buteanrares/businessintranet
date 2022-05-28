@@ -1,7 +1,7 @@
-export class TopicBaseModel {
+import { MessageBaseModel } from "./message-base-model";
+
+export class BoardTopicBaseModel {
   id: number;
   title: string;
-  parent?: TopicBaseModel;
-  parentId?: number;
-  children: TopicBaseModel[];
+  boardMessages: MessageBaseModel[];
 }

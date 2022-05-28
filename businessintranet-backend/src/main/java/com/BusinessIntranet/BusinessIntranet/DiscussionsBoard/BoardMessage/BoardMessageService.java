@@ -29,7 +29,7 @@ public class BoardMessageService {
                 .orElseThrow(() -> new BoardMessageNotFoundException("Board message with id " + id + " does not exist"));
     }
 
-    public Iterable<BoardMessage> findAllBoardMessagesBySender(Employee sender) {
+    public List<BoardMessage> findAllBoardMessagesBySender(Employee sender) {
         return boardMessageRepository.findAllBySender(sender);
     }
 
@@ -41,4 +41,7 @@ public class BoardMessageService {
         boardMessageRepository.deleteById(id);
     }
 
+    public List<BoardMessage> findAllByReferencedBoardTopicId(Long boardTopicId) {
+        return boardMessageRepository.findAllByReferencedBoardTopicId(boardTopicId);
+    }
 }
