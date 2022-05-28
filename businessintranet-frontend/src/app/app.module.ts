@@ -21,6 +21,7 @@ import { NgbModalModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { TokenInterceptorProvider } from './service/interceptors/token-interceptor.service';
 import { ToastrModule } from 'ngx-toastr';
+import { RolesFormatPipe } from './service/pipes/roles-format.pipe';
 
 
 
@@ -34,6 +35,7 @@ import { ToastrModule } from 'ngx-toastr';
     CalendarComponent,
     MeetingsComponent,
     DiscussionsBoardComponent,
+    RolesFormatPipe,
   ],
   imports: [
     BrowserModule,

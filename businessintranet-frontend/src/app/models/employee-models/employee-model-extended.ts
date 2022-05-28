@@ -7,5 +7,6 @@ export class EmployeeModelExtended extends EmployeeBaseModel {
   department: string;
   emailGroups: string[];
   manager: EmployeeBaseModel;
+  managerId: number;
   roles: EnumRole[];
 }

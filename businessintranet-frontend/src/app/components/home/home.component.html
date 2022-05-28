@@ -1,26 +1,29 @@
 <section>
     <div class="content-wrapper">
         <div class="employee-information-wrapper">
-            <!-- TODO: This is a mock, should display employee's information. -->
-            <h1>
-                TODO: This is a mock, should display employee's information.
-            </h1>
             <div class="employee-information-subtitle">
-                <h3>Welcome back, employee.firstName</h3>
+                <h2>Welcome back, {{ loggedInUser?.firstName }}</h2>
             </div>
             <div class="employee-information">
-                <label>Job: employee.jobTitle</label>
-                <label>Email: employee.email</label>
-                <label>Department: employee.department</label>
-            </div>
-        </div>
-        <div class="updates-wrapper">
-            <h3>Updates since last visit:</h3>
-            <div class="updates-content">
-                <h2>
-                    TODO: This is a mock, should display employee's updates
-                    since last log in.
-                </h2>
+                <label>Email: {{ loggedInUser?.email }}</label>
+                <label>Contact: {{ loggedInUser?.phone }}</label>
+                <br />
+                <label>Job: {{ loggedInUser?.jobTitle }}</label>
+                <label>Role: {{ loggedInUser.roles | rolesFormat }}</label>
+                <label>Department: {{ loggedInUser?.department }}</label>
+                <br />
+                <label
+                    >Manager:
+                    {{
+                        loggedInUser.manager?.firstName +
+                            " " +
+                            loggedInUser.manager?.lastName
+                    }}</label
+                >
+                <label>Manager email: {{ loggedInUser.manager?.email }}</label>
+                <label
+                    >Manager contact: {{ loggedInUser.manager?.phone }}</label
+                >
             </div>
         </div>
     </div>
