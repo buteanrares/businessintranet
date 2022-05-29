@@ -87,7 +87,7 @@ export class DiscussionsBoardComponent implements OnInit {
     )
   }
 
-  async postBoardMessage() {
+  postBoardMessage() {
     let boardMessage = new MessageBaseModel();
     this.mapDataToBoardMessage(boardMessage);
     this.discussionsBoardService.addBoardMessage(boardMessage).subscribe({
@@ -95,13 +95,15 @@ export class DiscussionsBoardComponent implements OnInit {
         boardMessage = rsp; // gets Id attribute
         this.selectedTopic.boardMessages.push(boardMessage);
         this.discussionsBoardService.updateBoardTopic(this.selectedTopic).subscribe({
-          next: () => this.toastr.success("Board message posted"),
+          next: async () => {
+            this.toastr.success("Board message posted");
+            this.messages.push(boardMessage);
+          },
           error: () => this.toastr.error("Error posting board message")
         })
       },
       error: () => this.toastr.error("Error posting board message")
     })
-    await this.refreshBoardTopicMessages(this.selectedTopicId);
   }
 
   private mapDataToBoardMessage(boardMessage: MessageBaseModel) {
