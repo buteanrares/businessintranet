@@ -67,7 +67,7 @@ export class MeetingsComponent implements OnInit {
   }
 
   startMeeting(event: any) {
-    window.location.href = `http://localhost:3000/${event.row.data.id}`;
+    window.location.href = `http://localhost:3030/${event.row.data.id}`;
   }
 
   hasPermissions() {
