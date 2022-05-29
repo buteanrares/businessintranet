@@ -1,1 +1,43 @@
-<p>meetings works!</p>
+<div class="permissions-wrapper-true" *ngIf="hasPermissions()">
+    <h4 class="table-title">Start a meeting</h4>
+    <div class="calendar-events-datagrid-wrapper">
+        <dx-data-grid
+            class="calendar-events-datagrid"
+            [dataSource]="calendarEvents"
+            [showBorders]="false"
+        >
+            <dxi-column
+                dataField="id"
+                width="100px"
+                [allowEditing]="false"
+            ></dxi-column>
+            <dxi-column dataField="title" width="225px"></dxi-column>
+            <dxi-column
+                dataField="start"
+                dataType="date"
+                width="175px"
+            ></dxi-column>
+            <dxi-column
+                dataField="end"
+                dataType="date"
+                width="175px"
+            ></dxi-column>
+            <dxi-column
+                dataField="invitedEmployeesIds"
+                width="175px"
+            ></dxi-column>
+            <dxi-column type="buttons" caption="Start meeting">
+                <dxi-button
+                    caption="test"
+                    [visible]="true"
+                    [disabled]="false"
+                    icon="isnotblank"
+                    [onClick]="startMeeting"
+                ></dxi-button>
+            </dxi-column>
+        </dx-data-grid>
+    </div>
+</div>
+<div class="permission-wrapper-false" *ngIf="!hasPermissions()">
+    <h3>You do not have the required permissions to start a meeting.</h3>
+</div>

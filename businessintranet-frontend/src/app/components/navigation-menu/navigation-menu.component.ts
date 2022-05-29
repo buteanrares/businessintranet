@@ -15,7 +15,6 @@ export class NavigationMenuComponent implements OnInit {
   }
 
   onSelectTab(e: event) {
-    console.log(e);
   }
 
 }

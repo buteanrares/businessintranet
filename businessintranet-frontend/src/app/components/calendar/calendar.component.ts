@@ -43,9 +43,7 @@ export class CalendarComponent implements OnInit {
   async ngOnInit(): Promise<void> {
     const data$ = this.authenticationService.getLoggedInUser();
     this.loggedInUser = await lastValueFrom(data$);
-    console.log(this.loggedInUser);
     this.initData();
-    console.log(this.availableColors);
   }
 
   initData() {
