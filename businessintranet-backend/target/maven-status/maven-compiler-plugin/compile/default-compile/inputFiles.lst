@@ -1,16 +1,46 @@
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Configuration\Configuration.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\WebSecurityConfig.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Controllers\AccountController.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\KeycloakConfiguration\MySQLUserStorageProvider.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Controllers\EmployeeController.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\BusinessIntranetApplication.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Models\Account.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Services\EmployeeService.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Repositories\AccountRepository.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Services\AccountService.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Models\Employee.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Enums\Department.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\KeycloakConfiguration\MySQLUserStorageProviderFactory.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Exceptions\AccountNotFoundException.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Exceptions\EmployeeNotFoundException.java
-C:\Users\Rares\Desktop\Business Intranet Solution\src\main\java\com\BusinessIntranet\BusinessIntranet\Repositories\EmployeeRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\EmployeeRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Role\Role.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\AuthenticationController.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\CalendarEventController.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\CalendarEventColor.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\PrivateMessage\PrivateMessageController.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Responses\MessageResponse.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardMessage\BoardMessageController.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Configuration\Configuration.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\Exceptions\EmployeeNotFoundException.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\UserPrincipal\UserPrincipal.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\PrivateMessage\PrivateMessageRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Requests\LoginRequest.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\CalendarEventRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\AuthEntryPointJwt.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\Employee.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\CalendarEvent.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\WebSecurityConfig.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\PrivateMessage\PrivateMessageService.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\DTOs\EmployeeDTO.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\JwtUtils.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardTopic\Exceptions\BoardTopicNotFoundException.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Enums\EnumRole.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\Exceptions\CalendarEventNotFoundException.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Common\SharedModels\Message.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\PrivateMessage\Exceptions\MessageNotFoundException.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Responses\JwtResponse.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\CalendarEvent\CalendarEventService.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Enums\EnumDepartment.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardTopic\BoardTopicRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\EmployeeService.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardMessage\BoardMessageService.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\AuthTokenFilter.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardTopic\BoardTopic.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardTopic\BoardTopicService.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\PrivateMessage\PrivateMessage.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Enums\EnumPermission.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardMessage\BoardMessage.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Services\UserDetailsServiceImpl.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\BusinessIntranetApplication.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Requests\SignupRequest.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Security\Services\UserDetailsImpl.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardMessage\Exceptions\BoardMessageNotFoundException.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardMessage\BoardMessageRepository.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\DiscussionsBoard\BoardTopic\BoardTopicController.java
+C:\Users\Rares Butean\IdeaProjects\businessintranet\businessintranet-backend\src\main\java\com\BusinessIntranet\BusinessIntranet\Employee\EmployeeController.java

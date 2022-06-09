@@ -41,7 +41,9 @@ export class EmployeesComponent implements OnInit {
     )
   }
 
-  updateEmployee(event: { data: EmployeeModelExtended }) {
+  updateEmployee(event: any) {
+    console.log(event);
+    event.data.roles = event.data.roles.split(', ');
     this.employeeService.updateEmployee(event.data).subscribe(
       {
         next: () => this.toastr.success("Employee updated"),
@@ -70,6 +72,6 @@ export class EmployeesComponent implements OnInit {
 
 
   hasPermissionToEditRows() {
-    return this.loggedInUser.roles.some(role => [EnumRole.ROLE_CEO, EnumRole.ROLE_HRMANAGER].includes(role));
+    return this.loggedInUser.roles?.some(role => [EnumRole.ROLE_CEO, EnumRole.ROLE_HRMANAGER].includes(role));
   }
 }

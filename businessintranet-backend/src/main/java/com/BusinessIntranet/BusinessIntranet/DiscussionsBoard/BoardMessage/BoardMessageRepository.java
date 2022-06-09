@@ -11,6 +11,6 @@ import java.util.List;
 public interface BoardMessageRepository extends JpaRepository<BoardMessage,Long> {
     List<BoardMessage> findAllBySender(Employee sender);
 
-    @Query(value = "select * from board_message where referenced_board_topic_id=?1 ",nativeQuery = true)
+    @Query(value = "select * from board_message where referenced_board_topic_id=?1 ", nativeQuery = true)
     List<BoardMessage> findAllByReferencedBoardTopicId(Long boardTopicId);
 }
